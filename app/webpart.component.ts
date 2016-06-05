@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { datumComponent} from './datum.component'
-import { nummerComponent} from './nummer.component'
+import { veldenComponent} from './velden.component'
+
 
 @Component({
     selector: 'webpart',
@@ -15,13 +15,12 @@ import { nummerComponent} from './nummer.component'
   <div class="content">
     <table class="properties" width="100%" cellpadding="0" cellspacing="0">
       <tbody>
-        <datum-veld></datum-veld>
-        <nummer-veld></nummer-veld>
+        <velden></velden>
       </tbody>
     </table>
   </div>
   `,
-  directives: [datumComponent, nummerComponent]
+  directives: [veldenComponent]
 })
 export class webpartComponent {
 }
