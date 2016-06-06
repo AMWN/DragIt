@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { veldenComponent} from './velden.component'
-
+import { Http, Response } from '@angular/http';
+import 'rxjs/Rx';
 
 @Component({
     selector: 'webpart',
@@ -19,8 +20,19 @@ import { veldenComponent} from './velden.component'
       </tbody>
     </table>
   </div>
+  <pre>{{pagina | json}}</pre>
   `,
   directives: [veldenComponent]
 })
 export class webpartComponent {
+
+  public pagina = {};
+
+  constructor (http : Http) {
+
+    http.get('app/pagina.json')
+        .map(res => this.pagina = res.json())
+
+  }
+
 }
