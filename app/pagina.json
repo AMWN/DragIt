@@ -1,23 +1,22 @@
 {
-    titel: 'Inkoopaanvraag',
-    omschrijving: 'Inkoopaanvraag Kees Zandbergen'
-    webparts: [{
-        id: 1,
-        volgnummer: 1,
-        omschrijving: 'Algemeen'
-        velden: [{
-            id: 1,
-            volgnummer: 1,
-            type: 'datum',
-            key: '',
-            value: '2016-6-5',
+    "titel": "Inkoopaanvraag",
+    "omschrijving": "Inkoopaanvraag Kees Zandbergen",
+    "webparts" : [{
+        "id": 1,
+        "volgnummer": 1,
+        "omschrijving": "Algemeen",
+        "velden" : [{
+            "id": 1,
+            "volgnummer": 1,
+            "type": "datum",
+            "key": "",
+            "value": "2016-6-5"
         }, {
-            id: 2,
-            volgnummer: 2,
-            type: 'nummer',
-            key: '',
-            value: '1200,00',
+            "id": 2,
+            "volgnummer": 2,
+            "type": "nummer",
+            "key": "",
+            "value": 1200.00
         }]
     }]
-
 }

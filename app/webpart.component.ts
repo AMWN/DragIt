@@ -24,15 +24,8 @@ import 'rxjs/Rx';
   `,
   directives: [veldenComponent]
 })
+
 export class webpartComponent {
 
-  public pagina = {};
-
-  constructor (http : Http) {
-
-    http.get('app/pagina.json')
-        .map(res => this.pagina = res.json())
-
-  }
 
 }

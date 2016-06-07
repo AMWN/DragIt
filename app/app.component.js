@@ -14,8 +14,8 @@ require('rxjs/Rx');
 var webpart_component_1 = require('./webpart.component');
 var AppComponent = (function () {
     function AppComponent(http, window) {
-        this.data = {};
-        this.log = {};
+        var _this = this;
+        this.pagina = {};
         var getParameterByName = function (name) {
             name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
             var regexS = "[\\?&]" + name + "=([^&#]*)";
@@ -29,6 +29,9 @@ var AppComponent = (function () {
         http.get(getParameterByName("dataurl") + "?callback=JSON_CALLBACK")
             .map(this.extractData)
             .subscribe(this.appendTohead);
+        http.get('app/pagina.json')
+            .map(function (res) { return _this.pagina = res.json(); })
+            .subscribe();
     }
     AppComponent.prototype.extractData = function (res) {
         var body = res.text().split("(")[1];

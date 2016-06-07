@@ -18,8 +18,7 @@ import { webpartComponent } from './webpart.component'
 })
 
 export class AppComponent {
-    public data = {};
-    public log = {};
+    public pagina = {};
 
     private extractData(res: Response) {
         let body = res.text().split("(")[1];
@@ -60,6 +59,11 @@ export class AppComponent {
         http.get(getParameterByName("dataurl") + "?callback=JSON_CALLBACK")
             .map(this.extractData)
             .subscribe(this.appendTohead)
+
+        http.get('app/pagina.json')
+            .map(res => this.pagina = res.json())
+            .subscribe();
+
 
 
     }
