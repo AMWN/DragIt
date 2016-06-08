@@ -1,22 +1,78 @@
 {
     "titel": "Inkoopaanvraag",
     "omschrijving": "Inkoopaanvraag Kees Zandbergen",
-    "webparts" : [{
+    "webparts": [{
         "id": 1,
         "volgnummer": 1,
         "omschrijving": "Algemeen",
-        "velden" : [{
+        "velden": [{
+                "id": 1,
+                "volgnummer": 1,
+                "type": "datum",
+                "label": "Datum",
+                "waarde": "2016-6-5"
+            }, {
+                "id": 2,
+                "volgnummer": 2,
+                "type": "link",
+                "label": "Crediteur",
+                "waarde": "AFAS Software B.V."
+            }, {
+                "id": 3,
+                "volgnummer": 3,
+                "type": "link",
+                "label": "Contactpersoon",
+                "waarde": "Kees Zandbergen"
+            }, {
+                "id": 4,
+                "volgnummer": 4,
+                "type": "link",
+                "label": "Contract",
+                "waarde": "AFAS Software B.V."
+            }, {
+                "id": 5,
+                "volgnummer": 5,
+                "type": "link",
+                "label": "Referentie",
+                "waarde": "VKP012489-AW"
+            }, {
+                "id": 6,
+                "volgnummer": 6,
+                "type": "link",
+                "label": "Beoordelaar",
+                "waarde": "Cas de Graaf"
+            }, {
+                "id": 7,
+                "volgnummer": 7,
+                "type": "tekst",
+                "label": "Omschrijving",
+                "waarde": "Cas de Graaf"
+            }
+
+        ]
+    }, {
+        "id": 2,
+        "volgnummer": 2,
+        "omschrijving": "Opmerking",
+        "velden": [{
             "id": 1,
             "volgnummer": 1,
-            "type": "datum",
-            "key": "",
-            "value": "2016-6-5"
-        }, {
-            "id": 2,
-            "volgnummer": 2,
-            "type": "nummer",
-            "key": "",
-            "value": 1200.00
+            "type": "memo",
+            "label": "Opmerking",
+            "waarde": "Don’t ever play yourself. It’s important to use cocoa butter. It’s the key to more success, why not live smooth? Why live rough? The key to success is to keep your head above the water, never give up. You should never complain, complaining is a weak emotion, you got life, we breathing, we blessed. They will try to close the door on you, just open it. The other day the grass was brown, now it’s green because I ain’t give up. Never surrender. You see that bamboo behind me though, you see that bamboo? Ain’t nothin’ like bamboo. Bless up.",
+            "regels": 5
+        }]
+    }, {
+        "id": 3,
+        "volgnummer": 3,
+        "omschrijving": "Opmerking",
+        "velden": [{
+            "id": 1,
+            "volgnummer": 1,
+            "type": "memo",
+            "label": "Opmerking",
+            "waarde": "Don’t ever play yourself. It’s important to use cocoa butter. It’s the key to more success, why not live smooth? Why live rough? The key to success is to keep your head above the water, never give up. You should never complain, complaining is a weak emotion, you got life, we breathing, we blessed. They will try to close the door on you, just open it. The other day the grass was brown, now it’s green because I ain’t give up. Never surrender. You see that bamboo behind me though, you see that bamboo? Ain’t nothin’ like bamboo. Bless up.",
+            "regels": 5
         }]
     }]
 }

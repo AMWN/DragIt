@@ -2,55 +2,51 @@
   <table class="properties" width="100%" cellpadding="0" cellspacing="0">
     <tbody>
       <!--Datum control-->
-      <tr>
+      <tr *ngIf="veld.type === 'datum'">
         <td class="label" valign="top">
-          <label style="white-space:nowrap;">Datum</label>
+          <label style="white-space:nowrap;">{{veld.label}}</label>
         </td>
         <td class="value valuerows0" valign="top">
           <div>
-            <span title="Instuurdatum">01-01-1970 00:00</span>
+            <span title="Instuurdatum">{{veld.waarde}}</span>
           </div>
         </td>
       </tr><!--Datum control-->
       <!--Cijfer control-->
-      <tr>
+      <tr *ngIf="veld.type === 'nummer'">
         <td class="label" valign="top">
-          <label style="white-space:nowrap;">Cijfer</label>
+          <label style="white-space:nowrap;">{{veld.label}}</label>
         </td>
         <td class="value valuerows0" valign="top">
           <div>
-            <span title="Nummer">12345</span>
+            <span title="Nummer">{{veld.waarde}}</span>
           </div>
         </td>
       </tr><!--Cijfer control-->
       <!--Tekstregel control-->
-      <tr>
+      <tr *ngIf="veld.type === 'tekst'">
         <td class="label" valign="top">
-          <span style="white-space:nowrap;">Tekstregel</span>
+          <span style="white-space:nowrap;">{{veld.label}}</span>
         </td>
         <td class="value" valign="top">
           <div class="readonlyMemo doWrap">
-            <span>Lorem ipsum dolor sit amet</span>
+            <span>{{veld.waarde}}</span>
           </div>
         </td>
       </tr><!--Tekstregel control-->
       <!--Tekstblok control-->
-      <tr>
+      <tr *ngIf="veld.type === 'memo'">
         <td class="label" valign="top">
-          <label style="white-space:nowrap;">Tekstblok</label>
+          <label style="white-space:nowrap;">{{veld.label}}</label>
         </td>
-        <td class="value valuerows10" valign="top">
+        <td class="value valuerows{{veld.regels}}" valign="top">
           <div>
             <table width="100%" cellpadding="0" cellspacing="0">
               <tbody>
                 <tr>
                   <td valign="top">
-                    <div title="Toets hier iets zinnigs in!" class="readonlyMemo doWrap fixedHeight memoRows10">
-                      <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut erat sit amet ipsum commodo bibendum vitae vel sapien. Ut viverra, eros id aliquam mattis, augue velit elementum orci, sit amet euismod quam elit ut est. Sed lacinia orci at quam elementum, sit amet fermentum justo pretium. Donec vel mauris quis tellus dignissim accumsan. Aliquam malesuada augue nec nulla ullamcorper suscipit. Phasellus tincidunt ligula posuere sapien posuere volutpat. Curabitur non massa nec elit volutpat venenatis at in arcu. Fusce interdum eros et porta consequat. Suspendisse ac odio efficitur, sagittis sapien vitae, convallis massa. Mauris a nibh consequat, bibendum lectus ultricies, tristique ipsum. Nunc at aliquam tellus.<br>
-                      <br>
-                      Praesent posuere auctor gravida. Vivamus aliquet mi dolor. Sed vel diam metus. Maecenas pharetra magna eu diam varius sagittis. Mauris tincidunt cursus bibendum. Curabitur ut tempus neque, quis molestie nisl. Fusce et leo ut tortor ullamcorper aliquam. Nullam sodales ut turpis id euismod.<br>
-                      <br>
-                      Suspendisse turpis velit, tempor sed elit vitae, cursus luctus urna. Quisque et sagittis eros. Praesent bibendum nibh nisl, a convallis libero pulvinar a. Etiam iaculis ante sit amet urna facilisis, at volutpat elit rhoncus. Aenean sapien ipsum, gravida ac magna eget, accumsan blandit risus. Phasellus dolor arcu, vestibulum vel interdum eget, lobortis non nulla. Etiam finibus ante orci, euismod sodales lorem vestibulum eu. Donec accumsan orci sapien, sed laoreet nisi molestie quis. Integer facilisis quis enim vel ultricies. Vestibulum iaculis nec erat et efficitur.</span>
+                    <div title="Toets hier iets zinnigs in!" class="readonlyMemo doWrap fixedHeight memoRows{{veld.regels}}">
+                      <span>{{veld.waarde}}</span>
                     </div>
                   </td>
                 </tr>
@@ -60,29 +56,29 @@
         </td>
       </tr><!--Tekstblok control-->
       <!--Bijlage control-->
-      <tr>
+      <tr *ngIf="veld.type === 'bijlage'">
         <td class="label" valign="top">
-          <label style="white-space:nowrap;">Bijlage</label>
+          <label style="white-space:nowrap;">{{veld.label}}</label>
         </td>
         <td class="value valuerows0" valign="top">
           <div class="filecontrol">
-            <a title="Bijlage" class="linkcontrol" href="#">Document.docx</a>
+            <a title="Bijlage" class="linkcontrol" href="#">{{veld.waarde}}</a>
           </div>
         </td>
       </tr><!--Bijlage control-->
       <!--Link control-->
-      <tr>
+      <tr *ngIf="veld.type === 'link'">
         <td class="label" valign="top">
-          <label style="white-space:nowrap;">Link</label>
+          <label style="white-space:nowrap;">{{veld.label}}</label>
         </td>
         <td class="value valuerows0" valign="top">
           <div class="searchControl">
-            <a title="Link" class="linkcontrol control" href="#">Patrick Hopman</a>
+            <a title="Link" class="linkcontrol control" href="#">{{veld.waarde}}</a>
           </div>
         </td>
       </tr><!--Link control-->
       <!--Ja/nee control-->
-      <tr>
+      <tr *ngIf="veld.type === 'janee'">
         <td class="label" valign="top"></td>
         <td class="value valuerows0" valign="top">
           <div>
@@ -93,7 +89,7 @@
                     <input tabindex="-1" title="Vinkje" class="control checkbox disabled" type="checkbox" autocomplete="off" disabled="disabled">
                   </td>
                   <td valign="middle">
-                    <label style="white-space:nowrap;">Vinkje</label>
+                    <label style="white-space:nowrap;">{{veld.label}}</label>
                   </td>
                 </tr>
               </tbody>

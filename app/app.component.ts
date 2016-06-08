@@ -1,18 +1,20 @@
 import { Component } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/Rx';
+import { PaginaService } from './pagina.service';
 
 import { webpartComponent } from './webpart.component'
 
 
 @Component({
     selector: 'my-app',
-    template: `<h1>My Second Angular 2 App</h1>
+    template: `<h1>{{pagina.titel}}</h1>
       <!--Begin Pagina-->
       <div class="part clear" style="padding:0px 0px 10px 0px;">
-        <webpart>
+        <webpart *ngFor='let webpart of pagina.webparts' [webpart]="webpart">
         </webpart>
       </div>
+      <pre>{{pagina | json}}</pre>
     `,
     directives: [webpartComponent]
 })

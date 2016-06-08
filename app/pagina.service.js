@@ -9,21 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var veldenComponent = (function () {
-    function veldenComponent() {
+var BehaviorSubject_1 = require('rxjs/BehaviorSubject');
+var PaginaService = (function () {
+    function PaginaService() {
+        // Observable navItem source
+        this._paginaSource = new BehaviorSubject_1.BehaviorSubject[(0)];
+        // Observable navItem stream
+        this.navItem$ = this._navItemSource.asObservable();
     }
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], veldenComponent.prototype, "veld", void 0);
-    veldenComponent = __decorate([
-        core_1.Component({
-            selector: 'velden',
-            templateUrl: 'app/velden.show.html'
-        }), 
+    // service command
+    PaginaService.prototype.changeNav = function (number) {
+        this._navItemSource.next(number);
+    };
+    PaginaService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], veldenComponent);
-    return veldenComponent;
+    ], PaginaService);
+    return PaginaService;
 }());
-exports.veldenComponent = veldenComponent;
-//# sourceMappingURL=velden.component.js.map
+exports.PaginaService = PaginaService;
+//# sourceMappingURL=pagina.service.js.map

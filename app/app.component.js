@@ -53,7 +53,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "<h1>My Second Angular 2 App</h1>\n      <!--Begin Pagina-->\n      <div class=\"part clear\" style=\"padding:0px 0px 10px 0px;\">\n        <webpart>\n        </webpart>\n      </div>\n    ",
+            template: "<h1>{{pagina.titel}}</h1>\n      <!--Begin Pagina-->\n      <div class=\"part clear\" style=\"padding:0px 0px 10px 0px;\">\n        <webpart *ngFor='let webpart of pagina.webparts' [webpart]=\"webpart\">\n        </webpart>\n      </div>\n      <pre>{{pagina | json}}</pre>\n    ",
             directives: [webpart_component_1.webpartComponent]
         }), 
         __metadata('design:paramtypes', [http_1.Http, Window])
