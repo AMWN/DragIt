@@ -1,10 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { PaginaService } from './pagina.service';
-
 import { webpartComponent } from './webpart.component'
-
 
 @Component({
     selector: 'my-app',
@@ -16,10 +14,11 @@ import { webpartComponent } from './webpart.component'
       </div>
       <pre>{{pagina | json}}</pre>
     `,
-    directives: [webpartComponent]
+    directives: [webpartComponent],
+    providers: [PaginaService]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
     public pagina = {};
 
     private extractData(res: Response) {
@@ -44,7 +43,9 @@ export class AppComponent {
 
     }
 
-    constructor(http: Http, window: Window) {
+    constructor(  http: Http,
+                  window: Window,
+                private paginaService : PaginaService ) {
 
         var getParameterByName = function(name) {
             name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
@@ -62,12 +63,12 @@ export class AppComponent {
             .map(this.extractData)
             .subscribe(this.appendTohead)
 
-        http.get('app/pagina.json')
-            .map(res => this.pagina = res.json())
-            .subscribe();
+    }
 
-
-
+    ngOnInit() {
+      this.paginaService.getPagina().subscribe(
+        data => this.pagina = data
+      );
     }
 
 

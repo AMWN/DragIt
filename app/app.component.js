@@ -11,10 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/Rx');
+var pagina_service_1 = require('./pagina.service');
 var webpart_component_1 = require('./webpart.component');
 var AppComponent = (function () {
-    function AppComponent(http, window) {
-        var _this = this;
+    function AppComponent(http, window, paginaService) {
+        this.paginaService = paginaService;
         this.pagina = {};
         var getParameterByName = function (name) {
             name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
@@ -29,9 +30,6 @@ var AppComponent = (function () {
         http.get(getParameterByName("dataurl") + "?callback=JSON_CALLBACK")
             .map(this.extractData)
             .subscribe(this.appendTohead);
-        http.get('app/pagina.json')
-            .map(function (res) { return _this.pagina = res.json(); })
-            .subscribe();
     }
     AppComponent.prototype.extractData = function (res) {
         var body = res.text().split("(")[1];
@@ -50,13 +48,18 @@ var AppComponent = (function () {
         js.src = res.scriptUrl;
         document.getElementsByTagName("head")[0].appendChild(js);
     };
+    AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.paginaService.getPagina().subscribe(function (data) { return _this.pagina = data; });
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
             template: "<h1>{{pagina.titel}}</h1>\n      <!--Begin Pagina-->\n      <div class=\"part clear\" style=\"padding:0px 0px 10px 0px;\">\n        <webpart *ngFor='let webpart of pagina.webparts' [webpart]=\"webpart\">\n        </webpart>\n      </div>\n      <pre>{{pagina | json}}</pre>\n    ",
-            directives: [webpart_component_1.webpartComponent]
+            directives: [webpart_component_1.webpartComponent],
+            providers: [pagina_service_1.PaginaService]
         }), 
-        __metadata('design:paramtypes', [http_1.Http, Window])
+        __metadata('design:paramtypes', [http_1.Http, Window, pagina_service_1.PaginaService])
     ], AppComponent);
     return AppComponent;
 }());

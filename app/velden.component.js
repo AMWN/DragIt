@@ -9,12 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var veld_1 = require('./veld');
 var veldenComponent = (function () {
     function veldenComponent() {
     }
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', Object)
+        __metadata('design:type', veld_1.Veld)
     ], veldenComponent.prototype, "veld", void 0);
     veldenComponent = __decorate([
         core_1.Component({

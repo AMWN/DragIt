@@ -9,21 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var BehaviorSubject_1 = require('rxjs/BehaviorSubject');
+var http_1 = require('@angular/http');
 var PaginaService = (function () {
-    function PaginaService() {
-        // Observable navItem source
-        this._paginaSource = new BehaviorSubject_1.BehaviorSubject[(0)];
-        // Observable navItem stream
-        this.navItem$ = this._navItemSource.asObservable();
+    function PaginaService(http) {
+        this.http = http;
     }
-    // service command
-    PaginaService.prototype.changeNav = function (number) {
-        this._navItemSource.next(number);
+    PaginaService.prototype.getPagina = function () {
+        return this.http.get('app/pagina.json')
+            .map(function (res) { return res.json(); });
     };
     PaginaService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], PaginaService);
     return PaginaService;
 }());

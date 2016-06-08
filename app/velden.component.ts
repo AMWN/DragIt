@@ -1,4 +1,5 @@
 import { Component , Input } from '@angular/core';
+import { Veld } from './veld';
 
 
 @Component({
@@ -7,5 +8,5 @@ import { Component , Input } from '@angular/core';
 })
 
 export class veldenComponent {
-  @Input() veld: Object;
+  @Input() veld: Veld;
 }

@@ -1,14 +1,17 @@
-import {Injectable}      from '@angular/core'
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
+
 export class PaginaService {
-  // Observable navItem source
-  private _paginaSource = new BehaviorSubject[<number>(0)];
-  // Observable navItem stream
-  navItem$ = this._navItemSource.asObservable();
-  // service command
-  changeNav(number) {
-    this._navItemSource.next(number);
-  }
+    constructor(private http: Http) {
+
+    }
+
+    getPagina() {
+        return this.http.get('app/pagina.json')
+            .map(res => res.json())
+    }
+
 }
