@@ -16,7 +16,8 @@ var PaginaService = (function () {
     }
     PaginaService.prototype.getPagina = function () {
         return this.http.get('app/pagina.json')
-            .map(function (res) { return res.json(); });
+            .map(function (res) { return res.json(); })
+            .catch(function (err) { return err; });
     };
     PaginaService = __decorate([
         core_1.Injectable(), 

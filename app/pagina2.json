@@ -1,6 +1,6 @@
 {
-  "titel": "Inkoopaanvraag",
-  "omschrijving": "Inkoopaanvraag Uitbreiding ERP licentie (IA16002320)",
+  "titel": "Inkoopaanvraag2",
+  "omschrijving": "balbalbalInkoopaanvraag Uitbreiding ERP licentie (IA16002320)",
   "webparts": [
     {
       "id": 1,
@@ -34,13 +34,6 @@
           "type": "tekst",
           "label": "Omschrijving",
           "waarde": "Uitbreiding ERP licentie"
-        },
-        {
-          "id": 12,
-          "volgnummer": 12,
-          "type": "datum",
-          "label": "Gewenste leverdatum",
-          "waarde": "09-06-2016"
         },
         {
           "id": 6,
