@@ -1,93 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/Rx';
-import { PaginaService } from './pagina.service';
-import { webpartComponent } from './webpart.component'
+import { PaginaService } from './services/pagina.service';
+import { webpartComponent } from './webpart.component';
+import { Dragula, DragulaService} from 'ng2-dragula/ng2-dragula';
+import { slideoutComponent } from './slideout.component';
+import { generateDownloadurl } from './pipes/generatedownloadurl.pipe';
 
 @Component({
     selector: 'my-app',
-    template: `
-      <!--Begin Pagina-->
-      <!--Begin titel-->
-		<div class="part pagetitle clear">
-			<div class="content">
-				<h1>
-					{{pagina.titel}}
-				</h1>
-			</div>
-		</div>
-		<!--Eind titel-->
-		<!--Begin omschrijving-->
-		<div class="part processsubtitle clear">
-			<div class="content">
-				{{pagina.omschrijving}}
-			</div>
-		</div>
-		<!--Eind omschrijving-->
-      <div class="part clear" style="padding:0px 0px 10px 0px;">
-        <webpart *ngFor='let webpart of pagina.webparts' [webpart]="webpart">
-        </webpart>
-      <div class="partheader" style="height:25px;white-space:nowrap;">
-
-
-        <h2 class="headertext">
-          Pagina definitie
-        </h2>
-      </div>
-      <div class="content">
-        <table class="properties" width="100%" cellpadding="0" cellspacing="0">
-          <tbody>
-          <div class="content">
-            <table class="properties" width="100%" cellpadding="0" cellspacing="0">
-              <tbody>
-                <tr>
-                  <td class="label" valign="top">
-                    <label style="white-space:nowrap;">Definitie JSON</label>
-                  </td>
-                  <td class="value valuerows0" valign="top">
-                    <div>
-                    <textarea id="textarea1" style=" width: 95%; height: 300px ">{{pagina | json}}}</textarea>
-                    <input type="file" (change)="changeListener($event)">
-                    <button (click)="onClickMe($event)">Save</button>
-
-                    </div>
-                  </td>
-                </tr>
-            </tbody>
-        </table>
-      </div>
-      </tbody>
-      </table>
-    </div>
-    </div>
-    <div *ngIf="errorMessage" class="error">{{errorMessage}}</div>
-    `,
-    directives: [webpartComponent],
-    providers: [PaginaService]
+    templateUrl: 'app/app.component.html',
+    directives: [webpartComponent, Dragula, slideoutComponent],
+    viewProviders: [DragulaService, PaginaService],
+    pipes: [generateDownloadurl]
 })
 
 export class AppComponent implements OnInit {
     public pagina = {};
-    public pagina2 = {};
     private errorMessage;
+    public data : string;
+    private edit;
 
-    onClickMe($event) {
-        var page = document.getElementById("textarea1").value;
-        this.pagina = JSON.parse(page.substring(0, page.length - 1));
+    public changeListener($event) {
+        this.readThis($event.target)
     }
 
-    changeListener($event) {
-      this.readThis($event.target)
-    }
-
-    readThis(inputValue: any): void {
+    private readThis(inputValue: any): void {
         var file: File = inputValue.files[0];
         var myReader: FileReader = new FileReader();
 
-        myReader.onloadend = function(e) {
-            this.pagina = myReader.result
-            //document.getElementById("textarea1").value = this.pagina;
-            console.log(JSON.parse(this.pagina));
+        myReader.onloadend = (e) => {
+            this.pagina = JSON.parse(myReader.result);
         }
 
         myReader.readAsText(file);
@@ -115,9 +58,14 @@ export class AppComponent implements OnInit {
 
     }
 
+    private toggleEdit(){
+      this.edit = !this.edit;
+    }
+
     constructor(http: Http,
         window: Window,
-        private paginaService: PaginaService) {
+        private paginaService: PaginaService,
+        private dragulaService: DragulaService) {
 
         var getParameterByName = function(name) {
             name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
@@ -129,14 +77,20 @@ export class AppComponent implements OnInit {
                 return "";
             else
                 return decodeURIComponent(results[1].replace(/\+/g, " "));
-
-
         };
 
         http.get(getParameterByName("dataurl") + "?callback=JSON_CALLBACK")
             .map(this.extractData)
             .subscribe(this.appendTohead)
+
+        dragulaService.setOptions('bag-head', {
+            moves: function(el, source, handle, sibling) {
+                return handle.classList.contains('headertext');
+            }
+        })
+
     }
+
 
     ngOnInit() {
         this.paginaService.getPagina().subscribe(
@@ -145,6 +99,4 @@ export class AppComponent implements OnInit {
         );
 
     }
-
-
 }

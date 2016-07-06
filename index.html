@@ -10,13 +10,18 @@
 -->
 <html id="P_html" xmlns="http://www.w3.org/1999/xhtml" class="responsive" lang="nl" xml:lang="nl">
 	<head id="P_head">
+
 		<title>
 			Productontwikkeling - InSite AFAS
 		</title>
-		<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- <link rel="stylesheet" href="style.css"> -->
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" href="vendor/font-awesome-4.6.3/css/font-awesome.min.css">
+
+		<!-- dragula css -->
+		<link rel="stylesheet" href="node_modules/dragula/dist/dragula.css">
 
 		<!-- 1. Load libraries -->
 		 <!-- Polyfill(s) for older browsers -->
@@ -24,6 +29,7 @@
 		<script src="node_modules/zone.js/dist/zone.js"></script>
 		<script src="node_modules/reflect-metadata/Reflect.js"></script>
 		<script src="node_modules/systemjs/dist/system.src.js"></script>
+
 
 		<!-- 2. Configure SystemJS -->
 		<script src="systemjs.config.js"></script>
@@ -33,8 +39,9 @@
 	</head>
 
 	<body id="P_body" class="sitebackground" style="overflow-y:scroll;overflow-x:auto;">
-	<my-app></my-app>
-		
+	<my-app>
+	</my-app>
+
 
 	</body>
 </html>

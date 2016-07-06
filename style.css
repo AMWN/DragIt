@@ -1,0 +1,60 @@
+div#slideout{
+	position:absolute;
+	background-color: #FFF;
+	border: 1px solid gray;
+	border-right-width: 0px;
+	border-bottom-left-radius: 3px;
+	padding: 10px;
+	margin-top: 10px;
+	right: -61px;
+	width: 40px;
+	transition: right 0.5s;
+    -webkit-transition: right 0.5s; /* Safari 3.1 to 6.0 */
+}
+
+div#slideout a.toggle{
+	position: absolute;
+	left: -46px;
+	top: -1px;
+	width: 40px;
+	height: 25px;
+	display: inline-block;
+	background: #FFF;
+	border: 1px solid gray;
+	border-bottom-left-radius: 3px;
+	border-top-left-radius: 3px;
+	border-right-width: 0px;
+    padding-top: 10px;
+    padding-left: 5px;
+}
+div#slideout:hover, div#slideout:focus{
+	right: 0px;
+}
+
+div#slideout ul{
+	list-style-type: none;
+	margin:0;
+	padding: 0;
+}
+
+div#slideout li fa{
+	display: inline-block;
+	width: 38px;
+	height: 38px;
+	font-size: 32px;
+	border: 0px solid gray;
+	margin-bottom: 10px;
+}
+
+div#slideout li:last-child fa{
+	margin-bottom: 0px;
+}
+
+.button-text-color {
+	color: white;
+}
+
+table.properties > tbody {
+	min-height: 1em;
+	display: block;
+}
