@@ -9,6 +9,8 @@ import { urlComponent } from './controls/url.component';
 import { memoComponent } from './controls/memo.component';
 import { bijlageComponent } from './controls/bijlage.component';
 import { janeeComponent } from './controls/janee.component';
+import { url2Component } from './controls/url2.component';
+
 
 @Component({
     selector: 'webpart',
@@ -17,6 +19,7 @@ import { janeeComponent } from './controls/janee.component';
         tekstComponent,
         nummerComponent,
         urlComponent,
+        url2Component,
         memoComponent,
         bijlageComponent,
         janeeComponent,
@@ -45,5 +48,6 @@ export class webpartComponent {
 
 
     constructor(private dragulaService: DragulaService) {
+
     }
 }

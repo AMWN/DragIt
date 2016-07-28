@@ -21,6 +21,10 @@ export class AppComponent implements OnInit {
     public data : string;
     private edit;
 
+    private toggleEdit(){
+      this.edit = !this.edit;
+    }
+
     public changeListener($event) {
         this.readThis($event.target)
     }
@@ -58,34 +62,35 @@ export class AppComponent implements OnInit {
 
     }
 
-    private toggleEdit(){
-      this.edit = !this.edit;
-    }
+    private getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        var regexS = "[\\?&]" + name + "=([^&#]*)";
+        var regex = new RegExp(regexS);
+        var results = regex.exec(window.location.href);
+
+        if (results === null)
+            return "";
+        else
+            return decodeURIComponent(results[1].replace(/\+/g, " "));
+    };
 
     constructor(http: Http,
         window: Window,
         private paginaService: PaginaService,
         private dragulaService: DragulaService) {
 
-        var getParameterByName = function(name) {
-            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-            var regexS = "[\\?&]" + name + "=([^&#]*)";
-            var regex = new RegExp(regexS);
-            var results = regex.exec(window.location.href);
-
-            if (results === null)
-                return "";
-            else
-                return decodeURIComponent(results[1].replace(/\+/g, " "));
-        };
-
-        http.get(getParameterByName("dataurl") + "?callback=JSON_CALLBACK")
+        http.get(this.getParameterByName("dataurl") + "?callback=JSON_CALLBACK")
             .map(this.extractData)
             .subscribe(this.appendTohead)
 
-        dragulaService.setOptions('bag-head', {
+        dragulaService.setOptions('bag-webpart', {
             moves: function(el, source, handle, sibling) {
-                return handle.classList.contains('headertext');
+               console.log('move wp');
+               console.log(el, source, handle, sibling);
+                return handle.classList.contains('headertext') || el.className === 'copy-me';
+            },
+            copy: function(el, source) {
+                return el.className === 'copy-me';
             }
         })
 

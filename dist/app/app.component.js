@@ -21,25 +21,23 @@ var AppComponent = (function () {
         this.paginaService = paginaService;
         this.dragulaService = dragulaService;
         this.pagina = {};
-        var getParameterByName = function (name) {
-            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-            var regexS = "[\\?&]" + name + "=([^&#]*)";
-            var regex = new RegExp(regexS);
-            var results = regex.exec(window.location.href);
-            if (results === null)
-                return "";
-            else
-                return decodeURIComponent(results[1].replace(/\+/g, " "));
-        };
-        http.get(getParameterByName("dataurl") + "?callback=JSON_CALLBACK")
+        http.get(this.getParameterByName("dataurl") + "?callback=JSON_CALLBACK")
             .map(this.extractData)
             .subscribe(this.appendTohead);
-        dragulaService.setOptions('bag-head', {
+        dragulaService.setOptions('bag-webpart', {
             moves: function (el, source, handle, sibling) {
-                return handle.classList.contains('headertext');
+                console.log('move wp');
+                console.log(el, source, handle, sibling);
+                return handle.classList.contains('headertext') || el.className === 'copy-me';
+            },
+            copy: function (el, source) {
+                return el.className === 'copy-me';
             }
         });
     }
+    AppComponent.prototype.toggleEdit = function () {
+        this.edit = !this.edit;
+    };
     AppComponent.prototype.changeListener = function ($event) {
         this.readThis($event.target);
     };
@@ -69,9 +67,17 @@ var AppComponent = (function () {
         js.src = res.scriptUrl;
         document.getElementsByTagName("head")[0].appendChild(js);
     };
-    AppComponent.prototype.toggleEdit = function () {
-        this.edit = !this.edit;
+    AppComponent.prototype.getParameterByName = function (name) {
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        var regexS = "[\\?&]" + name + "=([^&#]*)";
+        var regex = new RegExp(regexS);
+        var results = regex.exec(window.location.href);
+        if (results === null)
+            return "";
+        else
+            return decodeURIComponent(results[1].replace(/\+/g, " "));
     };
+    ;
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.paginaService.getPagina().subscribe(function (data) { return _this.pagina = data; }, function (error) { return _this.errorMessage = error; });

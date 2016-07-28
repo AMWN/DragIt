@@ -1,1 +1,204 @@
-{"titel":"Inkoopaanvraag","omschrijving":"Inkoopaanvraag Uitbreiding ERP licentie (IA16002320)","webparts":[{"id":1,"volgnummer":1,"omschrijving":"Algemeen","velden":[{"id":1,"volgnummer":1,"type":"datum","label":"Datum","waarde":"09-06-2016"},{"id":2,"volgnummer":2,"type":"url","label":"Inkooprelatie","omschrijving":"AFAS Software B.V.","waarde":"50001"},{"id":3,"volgnummer":3,"type":"url","label":"Contactpersoon","omschrijving":"Joop Zoetemelk","waarde":"JOOPZ"},{"id":8,"volgnummer":8,"type":"tekst","label":"Omschrijving","waarde":"Uitbreiding ERP licentie"},{"id":12,"volgnummer":12,"type":"datum","label":"Gewenste leverdatum","waarde":"09-06-2016"},{"id":6,"volgnummer":6,"type":"url","label":"Aanvrager","waarde":"KEESZ","omschrijving":"Kees Zanbergen"},{"id":7,"volgnummer":7,"type":"url","label":"Beoordelaar","waarde":"CASG","omschrijving":"Cas de Graaf"}]},{"id":4,"volgnummer":4,"omschrijving":"Verbijzondering","velden":[{"type":"url","label":"Vestiging","waarde":"01","regels":1,"omschrijving":"Hoofdkantoor","icon":"link"},{"type":"url","label":"Afdeling","waarde":"FE","regels":1,"omschrijving":"Finance","icon":"link"}]},{"id":4,"volgnummer":4,"omschrijving":"Referenties","velden":[{"id":9,"volgnummer":9,"type":"tekst","label":"Referentie inkooprelatie","waarde":"VKP93423-AM"},{"id":4,"volgnummer":4,"type":"url","label":"Contract","waarde":"CT000001","omschrijving":"AFAS Software B.V. - Profit+"}]},{"id":2,"volgnummer":2,"omschrijving":"Opmerking","velden":[{"id":1,"volgnummer":1,"type":"memo","label":"Opmerking","waarde":"Don’t ever play yourself. It’s important to use cocoa butter. It’s the key to more success, why not live smooth? Why live rough? The key to success is to keep your head above the water, never give up. You should never complain, complaining is a weak emotion, you got life, we breathing, we blessed. They will try to close the door on you, just open it. The other day the grass was brown, now it’s green because I ain’t give up. Never surrender. You see that bamboo behind me though, you see that bamboo? Ain’t nothin’ like bamboo. Bless up.","regels":5}]},{"id":3,"volgnummer":3,"omschrijving":"Project","velden":[{"id":1,"volgnummer":1,"type":"url","label":"Project","waarde":"300000","regels":"","omschrijving":"Implementatie AFAS"},{"type":"url","label":"Projectfase","waarde":"01","regels":1,"omschrijving":"Hoofdbegroting","icon":"link"}]},{"id":5,"volgnummer":5,"omschrijving":"Valuta","velden":[{"id":1,"volgnummer":1,"type":"tekst","label":"Valuta","waarde":"EUR","regels":""},{"id":2,"volgnummer":2,"type":"tekst","label":"Koers","waarde":"1,0000","regels":""}]},{"id":7,"volgnummer":7,"omschrijving":"Item","velden":[{"type":"url","label":"Itemtype","waarde":"Kst","regels":1,"omschrijving":"Kosten","icon":"link"},{"type":"url","label":"Itemcode","waarde":"4200","regels":1,"omschrijving":"Automatiseringskosten","icon":"link"},{"type":"tekst","label":"Omschrijving","waarde":"Automatiseringskosten","regels":1,"omschrijving":"","icon":"align-justify"},{"type":"tekst","label":"Aantal","waarde":"1","regels":1,"omschrijving":"","icon":"align-justify"},{"type":"url","label":"Eenheid","waarde":"STK","regels":1,"omschrijving":"Stuks","icon":"link"},{"type":"nummer","label":"Prijs per eenheid","waarde":"2500,00","regels":5,"omschrijving":"","icon":"euro"}]},{"id":6,"volgnummer":6,"omschrijving":"Bijlage","velden":[{"type":"bijlage","label":"Bijlage","waarde":"Factuur 20160001.pdf","regels":1,"omschrijving":"","icon":"file"}]}],"edit":true}
+{
+    "titel": "Inkoopaanvraag",
+    "omschrijving": "Inkoopaanvraag Uitbreiding ERP licentie (IA16002320)",
+    "webparts": [{
+        "id": 1,
+        "volgnummer": 1,
+        "omschrijving": "Algemeen",
+        "velden": [{
+            "id": 1,
+            "volgnummer": 1,
+            "type": "datum",
+            "label": "Datum",
+            "waarde": "09-06-2016"
+        }, {
+            "id": 2,
+            "volgnummer": 2,
+            "type": "url",
+            "label": "Inkooprelatie",
+            "omschrijving": "AFAS Software B.V.",
+            "waarde": "50001"
+        }, {
+            "id": 3,
+            "volgnummer": 3,
+            "type": "url",
+            "label": "Contactpersoon",
+            "omschrijving": "Joop Zoetemelk",
+            "waarde": "JOOPZ"
+        }, {
+            "id": 8,
+            "volgnummer": 8,
+            "type": "tekst",
+            "label": "Omschrijving",
+            "waarde": "Uitbreiding ERP licentie"
+        }, {
+            "id": 12,
+            "volgnummer": 12,
+            "type": "datum",
+            "label": "Gewenste leverdatum",
+            "waarde": "09-06-2016"
+        }, {
+            "id": 6,
+            "volgnummer": 6,
+            "type": "url",
+            "label": "Aanvrager",
+            "waarde": "KEESZ",
+            "omschrijving": "Kees Zanbergen"
+        }, {
+            "id": 7,
+            "volgnummer": 7,
+            "type": "url",
+            "label": "Beoordelaar",
+            "waarde": "CASG",
+            "omschrijving": "Cas de Graaf"
+        }]
+    }, {
+        "id": 4,
+        "volgnummer": 4,
+        "omschrijving": "Verbijzondering",
+        "velden": [{
+            "type": "url",
+            "label": "Vestiging",
+            "waarde": "01",
+            "regels": 1,
+            "omschrijving": "Hoofdkantoor",
+            "icon": "link"
+        }, {
+            "type": "url",
+            "label": "Afdeling",
+            "waarde": "FE",
+            "regels": 1,
+            "omschrijving": "Finance",
+            "icon": "link"
+        }]
+    }, {
+        "id": 4,
+        "volgnummer": 4,
+        "omschrijving": "Referenties",
+        "velden": [{
+            "id": 9,
+            "volgnummer": 9,
+            "type": "tekst",
+            "label": "Referentie inkooprelatie",
+            "waarde": "VKP93423-AM"
+        }, {
+            "id": 4,
+            "volgnummer": 4,
+            "type": "url",
+            "label": "Contract",
+            "waarde": "CT000001",
+            "omschrijving": "AFAS Software B.V. - Profit+"
+        }]
+    }, {
+        "id": 2,
+        "volgnummer": 2,
+        "omschrijving": "Opmerking",
+        "velden": [{
+            "id": 1,
+            "volgnummer": 1,
+            "type": "memo",
+            "label": "Opmerking",
+            "waarde": "Don’t ever play yourself. It’s important to use cocoa butter. It’s the key to more success, why not live smooth? Why live rough? The key to success is to keep your head above the water, never give up. You should never complain, complaining is a weak emotion, you got life, we breathing, we blessed. They will try to close the door on you, just open it. The other day the grass was brown, now it’s green because I ain’t give up. Never surrender. You see that bamboo behind me though, you see that bamboo? Ain’t nothin’ like bamboo. Bless up.",
+            "regels": 5
+        }]
+    }, {
+        "id": 3,
+        "volgnummer": 3,
+        "omschrijving": "Project",
+        "velden": [{
+            "id": 1,
+            "volgnummer": 1,
+            "type": "url",
+            "label": "Project",
+            "waarde": "300000",
+            "regels": "",
+            "omschrijving": "Implementatie AFAS"
+        }, {
+            "type": "url",
+            "label": "Projectfase",
+            "waarde": "01",
+            "regels": 1,
+            "omschrijving": "Hoofdbegroting",
+            "icon": "link"
+        }]
+    }, {
+        "id": 5,
+        "volgnummer": 5,
+        "omschrijving": "Valuta",
+        "velden": [{
+            "id": 1,
+            "volgnummer": 1,
+            "type": "tekst",
+            "label": "Valuta",
+            "waarde": "EUR",
+            "regels": ""
+        }, {
+            "id": 2,
+            "volgnummer": 2,
+            "type": "tekst",
+            "label": "Koers",
+            "waarde": "1,0000",
+            "regels": ""
+        }]
+    }, {
+        "id": 7,
+        "volgnummer": 7,
+        "omschrijving": "Item",
+        "velden": [{
+            "type": "url",
+            "label": "Itemtype",
+            "waarde": "Kst",
+            "regels": 1,
+            "omschrijving": "Kosten",
+            "icon": "link"
+        }, {
+            "type": "url",
+            "label": "Itemcode",
+            "waarde": "4200",
+            "regels": 1,
+            "omschrijving": "Automatiseringskosten",
+            "icon": "link"
+        }, {
+            "type": "tekst",
+            "label": "Omschrijving",
+            "waarde": "Automatiseringskosten",
+            "regels": 1,
+            "omschrijving": "",
+            "icon": "align-justify"
+        }, {
+            "type": "tekst",
+            "label": "Aantal",
+            "waarde": "1",
+            "regels": 1,
+            "omschrijving": "",
+            "icon": "align-justify"
+        }, {
+            "type": "url",
+            "label": "Eenheid",
+            "waarde": "STK",
+            "regels": 1,
+            "omschrijving": "Stuks",
+            "icon": "link"
+        }, {
+            "type": "nummer",
+            "label": "Prijs per eenheid",
+            "waarde": "2500,00",
+            "regels": 5,
+            "omschrijving": "",
+            "icon": "euro"
+        }]
+    }, {
+        "id": 6,
+        "volgnummer": 6,
+        "omschrijving": "Bijlage",
+        "velden": [{
+            "type": "bijlage",
+            "label": "Bijlage",
+            "waarde": "Factuur 20160001.pdf",
+            "regels": 1,
+            "omschrijving": "",
+            "icon": "file"
+        }]
+    }],
+    "edit": true
+}

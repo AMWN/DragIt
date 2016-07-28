@@ -18,6 +18,7 @@ var url_component_1 = require('./controls/url.component');
 var memo_component_1 = require('./controls/memo.component');
 var bijlage_component_1 = require('./controls/bijlage.component');
 var janee_component_1 = require('./controls/janee.component');
+var url2_component_1 = require('./controls/url2.component');
 var webpartComponent = (function () {
     function webpartComponent(dragulaService) {
         this.dragulaService = dragulaService;
@@ -50,6 +51,7 @@ var webpartComponent = (function () {
                 tekst_component_1.tekstComponent,
                 nummer_component_1.nummerComponent,
                 url_component_1.urlComponent,
+                url2_component_1.url2Component,
                 memo_component_1.memoComponent,
                 bijlage_component_1.bijlageComponent,
                 janee_component_1.janeeComponent,

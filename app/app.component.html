@@ -24,7 +24,8 @@
         <input *ngIf="edit" (dblclick)="toggleEdit($event)" class="control" [(ngModel)]="pagina.omschrijving" type="text" style="width: 75%">
     </div>
     <!--Eind omschrijving-->
-    <div class="part clear" style="padding:0px 0px 10px 0px;" [dragula]='"bag-head"' [dragulaModel]='pagina.webparts'>
+    ok
+    <div class="part clear" style="padding:0px 0px 10px 0px;" [dragula]='"bag-webpart"' [dragulaModel]='pagina.webparts'>
         <webpart *ngFor='let webpart of pagina.webparts' [webpart]="webpart" [pagina]="pagina"></webpart>
         <div class="partheader" style="height:25px;white-space:nowrap;">
 

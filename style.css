@@ -6,7 +6,7 @@ div#slideout{
 	border-bottom-left-radius: 3px;
 	padding: 10px;
 	margin-top: 10px;
-	right: -61px;
+	right: 0px;
 	width: 40px;
 	transition: right 0.5s;
     -webkit-transition: right 0.5s; /* Safari 3.1 to 6.0 */

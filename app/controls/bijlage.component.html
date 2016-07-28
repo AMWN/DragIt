@@ -1,15 +1,18 @@
 <!--Bijlage control-->
 <div>
-    <td class="label" valign="top">
+    <td>
         <button *ngIf="edit" (click)="deleteVeld(veld)" class="webbutton webbutton-image-only cursorpointer" style="white-space:nowrap;">
             <span class="webbuttonimagecontainer"><img class="webbutton-image" src="app/images/delete.png"></span>
         </button>
+    </td>
+    <td class="label" valign="top">
+
         <label *ngIf="!edit" (dblclick)="toggleEdit($event)" style="white-space:nowrap;">{{veld.label}}</label>
         <input *ngIf="edit" (dblclick)="toggleEdit($event)" class="control" [(ngModel)]="veld.label" type="text">
     </td>
     <td class="value valuerows0" valign="top">
         <div class="filecontrol">
-            <table *ngIf="edit || pagina.edit" >
+            <table *ngIf="edit || pagina.edit">
                 <tbody>
                     <tr>
                         <td valign="middle">

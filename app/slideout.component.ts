@@ -1,7 +1,8 @@
 import { Component, Input, EventEmitter } from '@angular/core';
 import { Dragula, DragulaService } from 'ng2-dragula/ng2-dragula';
-import { Veld } from './controls/veld.ts'
+import { Veld } from './controls/veld'
 import { FaComponent } from 'angular2-fontawesome/components';
+import { Webpart } from './controls/webpart';
 
 const VELDEN: Veld[] = [
     { type: 'datum', label: "Datum", waarde: '15-01-1985', regels: 1, omschrijving: '', icon: 'calendar' },
@@ -14,6 +15,29 @@ const VELDEN: Veld[] = [
     { type: 'janee', label: "Janee", waarde: '1', regels: 1, omschrijving: '', icon: 'check-square'  },
 ]
 
+const WEBPARTS: Webpart[] = [
+  {  omschrijving : "Algemeen",
+      velden: [{
+        type: "tekst",
+        label: "Label",
+        waarde: "Omschrijving",
+        regels: 1,
+        omschrijving: ""
+      }],
+      icon: 'wpforms'
+},{
+      omschrijving : "Algemeen",
+      velden: [{
+        type: "tekst",
+        label: "Label",
+        waarde: "Omschrijving",
+        regels: 1,
+        omschrijving: ""
+      }],
+      icon: 'wpforms'
+}
+]
+
 @Component({
     selector: 'slideout',
     templateUrl: 'app/slideout.component.html',
@@ -22,15 +46,18 @@ const VELDEN: Veld[] = [
 
 export class slideoutComponent {
     @Input() pagina: Object;
-    velden = VELDEN;
-    public trash: Object;
+    private velden = VELDEN;
+    private webparts = WEBPARTS;
 
     constructor(private dragulaService: DragulaService) {
+
         dragulaService.setOptions('bag-one', {
             copy: function(el, source) {
+                console.log('move one');
                 return el.className === 'copy-me';
             }
         })
+
     }
 
     public toggleEdit(){

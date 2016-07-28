@@ -1,15 +1,18 @@
 <!--Link control-->
 <div >
+    <td>
+        <button *ngIf="edit" (click)="deleteVeld(veld)" class="webbutton webbutton-image-only cursorpointer" style="white-space:nowrap;">
+            <span class="webbuttonimagecontainer"><img class="webbutton-image" src="app/images/delete.png"></span>
+        </button>
+    </td>
     <td class="label" valign="top">
-      <button  *ngIf="edit" (click)="deleteVeld(veld)" class="webbutton webbutton-image-only cursorpointer" style="white-space:nowrap;">
-          <span class="webbuttonimagecontainer"><img class="webbutton-image" src="app/images/delete.png"></span>
-      </button>
         <label *ngIf="!edit" (dblclick)="toggleEdit($event)" style="white-space:nowrap;">{{veld.label}}</label>
         <input *ngIf="edit" (dblclick)="toggleEdit($event)" class="control" [(ngModel)]="veld.label" type="text">
     </td>
     <td *ngIf="!pagina.edit && !edit" class="value valuerows0" valign="top">
         <div class="searchControl">
-            <a title="Link" class="linkcontrol control" href="#">{{veld.omschrijving}}</a>
+            <span class="description" *ngIf="!edit" (dblclick)="toggleEdit($event)">{{veld.omschrijving}}</span>
+
         </div>
     </td>
     <td *ngIf="edit || pagina.edit" (dblclick)="toggleEdit($event)" class="value valuerows0" valign="top">
@@ -28,7 +31,7 @@
                             </button>
                         </td>
                         <td class="text" valign="middle">
-                            <a *ngIf="!edit" (dblclick)="toggleEdit($event)" class="linkcontrol description" href="#" linktype="5">{{veld.omschrijving}}</a>
+                            <span class="description" *ngIf="!edit" (dblclick)="toggleEdit($event)">{{veld.omschrijving}}</span>
                             <input *ngIf="edit" (dblclick)="toggleEdit($event)" [(ngModel)]="veld.omschrijving" class="control" type="text">
                         </td>
                         <td valign="middle">

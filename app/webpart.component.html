@@ -14,6 +14,7 @@
                 <tekst *ngIf="veld.type === 'tekst'" [veld]="veld" [pagina]="pagina" (onDelete)="onDelete($event)"></tekst>
                 <nummer *ngIf="veld.type === 'nummer'" [veld]="veld" [pagina]="pagina" (onDelete)="onDelete($event)"></nummer>
                 <url *ngIf="veld.type === 'url'" [veld]="veld" [pagina]="pagina" (onDelete)="onDelete($event)"></url>
+                <url2 *ngIf="veld.type === 'url2'" [veld]="veld" [pagina]="pagina" (onDelete)="onDelete($event)"></url2>
                 <memo *ngIf="veld.type === 'memo'" [veld]="veld" [pagina]="pagina" (onDelete)="onDelete($event)"></memo>
                 <bijlage *ngIf="veld.type === 'bijlage'" [veld]="veld" [pagina]="pagina" (onDelete)="onDelete($event)"></bijlage>
                 <janee *ngIf="veld.type === 'janee'" [veld]="veld" [pagina]="pagina" (onDelete)="onDelete($event)"></janee>

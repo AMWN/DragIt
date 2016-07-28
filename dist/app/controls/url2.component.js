@@ -10,37 +10,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var ng2_dragula_1 = require('ng2-dragula/ng2-dragula');
-var urlComponent = (function () {
-    function urlComponent() {
+var url2Component = (function () {
+    function url2Component() {
         this.onDelete = new core_1.EventEmitter();
     }
-    urlComponent.prototype.toggleEdit = function () {
+    url2Component.prototype.toggleEdit = function () {
         this.edit = !this.edit;
     };
-    urlComponent.prototype.deleteVeld = function (veld) {
+    url2Component.prototype.deleteVeld = function (veld) {
         this.onDelete.emit(veld);
     };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
-    ], urlComponent.prototype, "veld", void 0);
+    ], url2Component.prototype, "veld", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
-    ], urlComponent.prototype, "pagina", void 0);
+    ], url2Component.prototype, "pagina", void 0);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)
-    ], urlComponent.prototype, "onDelete", void 0);
-    urlComponent = __decorate([
+    ], url2Component.prototype, "onDelete", void 0);
+    url2Component = __decorate([
         core_1.Component({
-            selector: 'url',
-            templateUrl: 'app/controls/url.component.html',
+            selector: 'url2',
+            templateUrl: 'app/controls/url2.component.html',
             directives: [ng2_dragula_1.Dragula]
         }), 
         __metadata('design:paramtypes', [])
-    ], urlComponent);
-    return urlComponent;
+    ], url2Component);
+    return url2Component;
 }());
-exports.urlComponent = urlComponent;
+exports.url2Component = url2Component;
 //# sourceMappingURL=url2.component.js.map

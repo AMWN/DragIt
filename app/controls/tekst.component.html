@@ -1,9 +1,11 @@
 <!--Tekstregel control-->
 <div>
+  <td>
+      <button *ngIf="edit" (click)="deleteVeld(veld)" class="webbutton webbutton-image-only cursorpointer" style="white-space:nowrap;">
+          <span class="webbuttonimagecontainer"><img class="webbutton-image" src="app/images/delete.png"></span>
+      </button>
+  </td>
   <td class="label" valign="top">
-    <button  *ngIf="edit" (click)="deleteVeld(veld)" class="webbutton webbutton-image-only cursorpointer" style="white-space:nowrap;">
-        <span class="webbuttonimagecontainer"><img class="webbutton-image" src="app/images/delete.png"></span>
-    </button>
     <span *ngIf="!edit" (dblclick)="toggleEdit($event)" style="white-space:nowrap;">{{veld.label}}</span>
     <input *ngIf="edit" (dblclick)="toggleEdit($event)" class="control" [(ngModel)]="veld.label" type="text">
   </td>

@@ -21,12 +21,36 @@ var VELDEN = [
     { type: 'bijlage', label: "Bijlage", waarde: 'Factuur 20160001.pdf', regels: 1, omschrijving: '', icon: 'file' },
     { type: 'janee', label: "Janee", waarde: '1', regels: 1, omschrijving: '', icon: 'check-square' },
 ];
+var WEBPARTS = [
+    { omschrijving: "Algemeen",
+        velden: [{
+                type: "tekst",
+                label: "Label",
+                waarde: "Omschrijving",
+                regels: 1,
+                omschrijving: ""
+            }],
+        icon: 'wpforms'
+    }, {
+        omschrijving: "Algemeen",
+        velden: [{
+                type: "tekst",
+                label: "Label",
+                waarde: "Omschrijving",
+                regels: 1,
+                omschrijving: ""
+            }],
+        icon: 'wpforms'
+    }
+];
 var slideoutComponent = (function () {
     function slideoutComponent(dragulaService) {
         this.dragulaService = dragulaService;
         this.velden = VELDEN;
+        this.webparts = WEBPARTS;
         dragulaService.setOptions('bag-one', {
             copy: function (el, source) {
+                console.log('move one');
                 return el.className === 'copy-me';
             }
         });
