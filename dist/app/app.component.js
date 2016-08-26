@@ -16,24 +16,37 @@ var webpart_component_1 = require('./webpart.component');
 var ng2_dragula_1 = require('ng2-dragula/ng2-dragula');
 var slideout_component_1 = require('./slideout.component');
 var generatedownloadurl_pipe_1 = require('./pipes/generatedownloadurl.pipe');
+var WEBPARTS = [
+    { omschrijving: "Algemeen",
+        velden: [{
+                type: "tekst",
+                label: "Label",
+                waarde: "Omschrijving",
+                regels: 1,
+                omschrijving: ""
+            }],
+        icon: 'wpforms'
+    }, {
+        omschrijving: "Algemeen",
+        velden: [{
+                type: "tekst",
+                label: "Label",
+                waarde: "Omschrijving",
+                regels: 1,
+                omschrijving: ""
+            }],
+        icon: 'wpforms'
+    }
+];
 var AppComponent = (function () {
     function AppComponent(http, window, paginaService, dragulaService) {
         this.paginaService = paginaService;
         this.dragulaService = dragulaService;
         this.pagina = {};
+        this.webparts = WEBPARTS;
         http.get(this.getParameterByName("dataurl") + "?callback=JSON_CALLBACK")
             .map(this.extractData)
             .subscribe(this.appendTohead);
-        dragulaService.setOptions('bag-webpart', {
-            moves: function (el, source, handle, sibling) {
-                console.log('move wp');
-                console.log(el, source, handle, sibling);
-                return handle.classList.contains('headertext') || el.className === 'copy-me';
-            },
-            copy: function (el, source) {
-                return el.className === 'copy-me';
-            }
-        });
     }
     AppComponent.prototype.toggleEdit = function () {
         this.edit = !this.edit;

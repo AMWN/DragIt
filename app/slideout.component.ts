@@ -47,13 +47,31 @@ const WEBPARTS: Webpart[] = [
 export class slideoutComponent {
     @Input() pagina: Object;
     private velden = VELDEN;
-    private webparts = WEBPARTS;
+    public parts = WEBPARTS;
 
     constructor(private dragulaService: DragulaService) {
 
         dragulaService.setOptions('bag-one', {
+          // moves: function(el, source, handle, sibling) {
+          //    console.log('move one');
+          //    console.log(el, source, handle, sibling);
+          //    el.className === 'copy-me';;
+          // },
             copy: function(el, source) {
-                console.log('move one');
+                console.log('copy one');
+                console.log(el)
+                return el.className === 'copy-me';
+            }
+        })
+
+        dragulaService.setOptions('bag-webpart', {
+            moves: function(el, source, handle, sibling) {
+               console.log('move wp');
+               console.log(el, source, handle, sibling);
+               return handle.classList.contains('headertext') || el.className === 'copy-me';;
+            },
+            copy: function(el, source) {
+                console.log(el)
                 return el.className === 'copy-me';
             }
         })

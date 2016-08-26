@@ -7,61 +7,69 @@
 </div>
 <!--Slideout-->
 
-    <div class="part pagetitle clear">
-        <div class="content">
-            <h1 *ngIf="!edit" (dblclick)="toggleEdit($event)">
-                {{pagina.titel}}
-            </h1>
-            <input *ngIf="edit" (dblclick)="toggleEdit($event)" class="control" [(ngModel)]="pagina.titel" type="text" style="width: 75%">
-        </div>
+<div class="part pagetitle clear">
+    <div class="content">
+        <h1 *ngIf="!edit" (dblclick)="toggleEdit($event)">
+            {{pagina.titel}}
+        </h1>
+        <input *ngIf="edit" (dblclick)="toggleEdit($event)" class="control" [(ngModel)]="pagina.titel" type="text" style="width: 75%">
     </div>
-    <!--Eind titel-->
-    <!--Begin omschrijving-->
-    <div class="part processsubtitle clear">
-        <div *ngIf="!edit" class="content" (dblclick)="toggleEdit($event)">
-            {{pagina.omschrijving}}
-        </div>
-        <input *ngIf="edit" (dblclick)="toggleEdit($event)" class="control" [(ngModel)]="pagina.omschrijving" type="text" style="width: 75%">
+</div>
+<!--Eind titel-->
+<!--Begin omschrijving-->
+<div class="part processsubtitle clear">
+    <div *ngIf="!edit" class="content" (dblclick)="toggleEdit($event)">
+        {{pagina.omschrijving}}
     </div>
-    <!--Eind omschrijving-->
-    ok
-    <div class="part clear" style="padding:0px 0px 10px 0px;" [dragula]='"bag-webpart"' [dragulaModel]='pagina.webparts'>
-        <webpart *ngFor='let webpart of pagina.webparts' [webpart]="webpart" [pagina]="pagina"></webpart>
-        <div class="partheader" style="height:25px;white-space:nowrap;">
+    <input *ngIf="edit" (dblclick)="toggleEdit($event)" class="control" [(ngModel)]="pagina.omschrijving" type="text" style="width: 75%">
+</div>
+<!--Eind omschrijving-->
+<div class="part clear" style="padding:0px 0px 10px 0px;" [dragula]='"bag-webpart"' [dragulaModel]='pagina.webparts'>
+    <webpart *ngFor='let webpart of pagina.webparts' [webpart]="webpart" [pagina]="pagina"></webpart>
 
-            <h2 class="headertext">
-                Pagina definitie
-            </h2>
-        </div>
-        <div class="content">
-            <table class="properties" width="100%" cellpadding="0" cellspacing="0">
-                <tbody>
-                    <div class="content">
-                        <table class="properties" width="100%" cellpadding="0" cellspacing="0">
-                            <tbody>
-                                <tr>
-                                    <td class="label" valign="top">
-                                        <label style="white-space:nowrap;">JSON Definitie</label>
-                                    </td>
-                                    <td class="value valuerows0" valign="top">
-                                        <div>
-                                            <button class="webbutton webbutton-text-only cursorpointer">
-                                                <span class="webbutton-text">Upload</span>
-                                                <input type="file" (change)="changeListener($event)" accept=".json">
-                                            </button>
+    <div class="partheader" style="height:25px;white-space:nowrap;">
 
-                                            <button class="webbutton webbutton-text-only cursorpointer">
-                                                <span class="webbutton-text">
-                                                    <a class="button-text-color" [href]="pagina | generateDownloadurl" [download]="pagina.titel+'.json'">Download JSON</a>
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </tbody>
-            </table>
-        </div>
+        <h2 class="headertext">
+            Pagina definitie
+        </h2>
     </div>
+    <div class="content">
+        <table class="properties" width="100%" cellpadding="0" cellspacing="0">
+            <tbody>
+                <div class="content">
+                    <table class="properties" width="100%" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td class="label" valign="top">
+                                    <label style="white-space:nowrap;">JSON Definitie</label>
+                                </td>
+                                <td class="value valuerows0" valign="top">
+                                    <div>
+                                        <button class="webbutton webbutton-text-only cursorpointer">
+                                            <span class="webbutton-text">Upload</span>
+                                            <input type="file" (change)="changeListener($event)" accept=".json">
+                                        </button>
+
+                                        <button class="webbutton webbutton-text-only cursorpointer">
+                                            <span class="webbutton-text">
+                                                <a class="button-text-color" [href]="pagina | generateDownloadurl" [download]="pagina.titel+'.json'">Download JSON</a>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- <div style="width: 50px;  height: 50px" [dragula]='"bag-webpart"' [dragulaModel]='webparts'>
+    <div style="height: 25px; background-color: green;" class="copy-me">
+        drag me 1
+    </div>
+    <div style="height: 25px; background-color: green;" class="copy-me">
+        drag me 2
+    </div>
+</div> -->

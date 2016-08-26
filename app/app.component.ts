@@ -6,6 +6,31 @@ import { webpartComponent } from './webpart.component';
 import { Dragula, DragulaService} from 'ng2-dragula/ng2-dragula';
 import { slideoutComponent } from './slideout.component';
 import { generateDownloadurl } from './pipes/generatedownloadurl.pipe';
+import { Webpart } from './controls/webpart'
+
+const WEBPARTS: Webpart[] = [
+  {  omschrijving : "Algemeen",
+      velden: [{
+        type: "tekst",
+        label: "Label",
+        waarde: "Omschrijving",
+        regels: 1,
+        omschrijving: ""
+      }],
+      icon: 'wpforms'
+},{
+      omschrijving : "Algemeen",
+      velden: [{
+        type: "tekst",
+        label: "Label",
+        waarde: "Omschrijving",
+        regels: 1,
+        omschrijving: ""
+      }],
+      icon: 'wpforms'
+}
+]
+
 
 @Component({
     selector: 'my-app',
@@ -20,6 +45,7 @@ export class AppComponent implements OnInit {
     private errorMessage;
     public data : string;
     private edit;
+    public webparts = WEBPARTS;
 
     private toggleEdit(){
       this.edit = !this.edit;
@@ -82,18 +108,6 @@ export class AppComponent implements OnInit {
         http.get(this.getParameterByName("dataurl") + "?callback=JSON_CALLBACK")
             .map(this.extractData)
             .subscribe(this.appendTohead)
-
-        dragulaService.setOptions('bag-webpart', {
-            moves: function(el, source, handle, sibling) {
-               console.log('move wp');
-               console.log(el, source, handle, sibling);
-                return handle.classList.contains('headertext') || el.className === 'copy-me';
-            },
-            copy: function(el, source) {
-                return el.className === 'copy-me';
-            }
-        })
-
     }
 
 
