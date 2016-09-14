@@ -25,7 +25,7 @@
 </div>
 <!--Eind omschrijving-->
 <div class="part clear" style="padding:0px 0px 10px 0px;">
-    <webpart [pagina]="pagina"> </webpart>
+    <webpart *ngIf="pagina" [pagina]="pagina"> </webpart>
 </div>
 
 <div class="part clear" style="padding:0px 0px 10px 0px;">
