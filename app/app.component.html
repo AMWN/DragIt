@@ -24,9 +24,11 @@
     <input *ngIf="edit" (dblclick)="toggleEdit($event)" class="control" [(ngModel)]="pagina.omschrijving" type="text" style="width: 75%">
 </div>
 <!--Eind omschrijving-->
-<div class="part clear" style="padding:0px 0px 10px 0px;" [dragula]='"bag-webpart"' [dragulaModel]='pagina.webparts'>
-    <webpart *ngFor='let webpart of pagina.webparts' [webpart]="webpart" [pagina]="pagina"></webpart>
+<div class="part clear" style="padding:0px 0px 10px 0px;">
+    <webpart [pagina]="pagina"> </webpart>
+</div>
 
+<div class="part clear" style="padding:0px 0px 10px 0px;">
     <div class="partheader" style="height:25px;white-space:nowrap;">
 
         <h2 class="headertext">
@@ -65,11 +67,3 @@
         </table>
     </div>
 </div>
-<!-- <div style="width: 50px;  height: 50px" [dragula]='"bag-webpart"' [dragulaModel]='webparts'>
-    <div style="height: 25px; background-color: green;" class="copy-me">
-        drag me 1
-    </div>
-    <div style="height: 25px; background-color: green;" class="copy-me">
-        drag me 2
-    </div>
-</div> -->

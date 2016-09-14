@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ng2_dragula_1 = require('ng2-dragula/ng2-dragula');
 var janeeComponent = (function () {
     function janeeComponent() {
         this.onDelete = new core_1.EventEmitter();
@@ -35,8 +34,7 @@ var janeeComponent = (function () {
     janeeComponent = __decorate([
         core_1.Component({
             selector: 'janee',
-            templateUrl: 'app/controls/janee.component.html',
-            directives: [ng2_dragula_1.Dragula]
+            templateUrl: 'app/controls/janee.component.html'
         }), 
         __metadata('design:paramtypes', [])
     ], janeeComponent);

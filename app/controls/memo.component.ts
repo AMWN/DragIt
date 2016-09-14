@@ -1,11 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Dragula } from 'ng2-dragula/ng2-dragula';
+
 import { Veld } from './veld';
 
 @Component({
     selector: 'memo',
-    templateUrl: 'app/controls/memo.component.html',
-    directives: [Dragula]
+    templateUrl: 'app/controls/memo.component.html'
 })
 
 export class memoComponent {

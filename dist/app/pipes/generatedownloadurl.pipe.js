@@ -20,7 +20,7 @@ var generateDownloadurl = (function () {
     };
     generateDownloadurl = __decorate([
         core_1.Pipe({ name: 'generateDownloadurl', pure: false }), 
-        __metadata('design:paramtypes', [platform_browser_1.DomSanitizationService])
+        __metadata('design:paramtypes', [platform_browser_1.DomSanitizer])
     ], generateDownloadurl);
     return generateDownloadurl;
 }());

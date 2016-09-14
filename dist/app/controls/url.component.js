@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ng2_dragula_1 = require('ng2-dragula/ng2-dragula');
 var urlComponent = (function () {
     function urlComponent() {
         this.onDelete = new core_1.EventEmitter();
@@ -35,8 +34,7 @@ var urlComponent = (function () {
     urlComponent = __decorate([
         core_1.Component({
             selector: 'url',
-            templateUrl: 'app/controls/url.component.html',
-            directives: [ng2_dragula_1.Dragula]
+            templateUrl: 'app/controls/url.component.html'
         }), 
         __metadata('design:paramtypes', [])
     ], urlComponent);

@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ng2_dragula_1 = require('ng2-dragula/ng2-dragula');
 var tekstComponent = (function () {
     function tekstComponent() {
         this.onDelete = new core_1.EventEmitter();
@@ -35,8 +34,7 @@ var tekstComponent = (function () {
     tekstComponent = __decorate([
         core_1.Component({
             selector: 'tekst',
-            templateUrl: 'app/controls/tekst.component.html',
-            directives: [ng2_dragula_1.Dragula]
+            templateUrl: 'app/controls/tekst.component.html'
         }), 
         __metadata('design:paramtypes', [])
     ], tekstComponent);

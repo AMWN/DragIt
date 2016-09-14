@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/Rx';
+import { DragulaService } from 'ng2-dragula/ng2-dragula';
 import { PaginaService } from './services/pagina.service';
-import { webpartComponent } from './webpart.component';
-import { Dragula, DragulaService} from 'ng2-dragula/ng2-dragula';
-import { slideoutComponent } from './slideout.component';
-import { generateDownloadurl } from './pipes/generatedownloadurl.pipe';
 import { Webpart } from './controls/webpart'
 
 const WEBPARTS: Webpart[] = [
@@ -31,13 +28,9 @@ const WEBPARTS: Webpart[] = [
 }
 ]
 
-
 @Component({
     selector: 'my-app',
-    templateUrl: 'app/app.component.html',
-    directives: [webpartComponent, Dragula, slideoutComponent],
-    viewProviders: [DragulaService, PaginaService],
-    pipes: [generateDownloadurl]
+    templateUrl: 'app/app.component.html'
 })
 
 export class AppComponent implements OnInit {
@@ -101,13 +94,36 @@ export class AppComponent implements OnInit {
     };
 
     constructor(http: Http,
-        window: Window,
         private paginaService: PaginaService,
-        private dragulaService: DragulaService) {
+        private dragulaService: DragulaService
+      ) {
+        dragulaService.setOptions('bag-one', {
+          // moves: function(el, source, handle, sibling) {
+          //    console.log('move one');
+          //    console.log(el, source, handle, sibling);
+          //    el.className === 'copy-me';;
+          // },
+            copy: function(el, source) {
+                console.log('copy one');
+                console.log(el)
+                return el.className === 'copy-me';
+            }
+        })
 
-        http.get(this.getParameterByName("dataurl") + "?callback=JSON_CALLBACK")
-            .map(this.extractData)
-            .subscribe(this.appendTohead)
+        dragulaService.setOptions('bag-webpart', {
+            moves: function(el, source, handle, sibling) {
+               console.log('move wp');
+               console.log(el, source, handle, sibling);
+               return handle.classList.contains('headertext') || el.className === 'copy-me';
+            },
+            copy: function(el, source) {
+                console.log(el)
+                return el.className === 'copy-me';
+            }
+        })
+        // http.get(this.getParameterByName("dataurl") + "?callback=JSON_CALLBACK")
+        //     .map(this.extractData)
+        //     .subscribe(this.appendTohead)
     }
 
 

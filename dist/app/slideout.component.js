@@ -9,8 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ng2_dragula_1 = require('ng2-dragula/ng2-dragula');
-var components_1 = require('angular2-fontawesome/components');
 var VELDEN = [
     { type: 'datum', label: "Datum", waarde: '15-01-1985', regels: 1, omschrijving: '', icon: 'calendar' },
     { type: 'tekst', label: "Tekst", waarde: 'Tekst veld', regels: 1, omschrijving: '', icon: 'align-justify' },
@@ -44,35 +42,38 @@ var WEBPARTS = [
     }
 ];
 var slideoutComponent = (function () {
-    function slideoutComponent(dragulaService) {
-        this.dragulaService = dragulaService;
+    function slideoutComponent() {
         this.velden = VELDEN;
-        this.parts = WEBPARTS;
-        dragulaService.setOptions('bag-one', {
-            // moves: function(el, source, handle, sibling) {
-            //    console.log('move one');
-            //    console.log(el, source, handle, sibling);
-            //    el.className === 'copy-me';;
-            // },
-            copy: function (el, source) {
-                console.log('copy one');
-                console.log(el);
-                return el.className === 'copy-me';
-            }
-        });
-        dragulaService.setOptions('bag-webpart', {
-            moves: function (el, source, handle, sibling) {
-                console.log('move wp');
-                console.log(el, source, handle, sibling);
-                return handle.classList.contains('headertext') || el.className === 'copy-me';
-                ;
-            },
-            copy: function (el, source) {
-                console.log(el);
-                return el.className === 'copy-me';
-            }
-        });
+        this.webparts = WEBPARTS;
     }
+    // constructor(private dragulaService: DragulaService) {
+    //
+    //     dragulaService.setOptions('bag-one', {
+    //       // moves: function(el, source, handle, sibling) {
+    //       //    console.log('move one');
+    //       //    console.log(el, source, handle, sibling);
+    //       //    el.className === 'copy-me';;
+    //       // },
+    //         copy: function(el, source) {
+    //             console.log('copy one');
+    //             console.log(el)
+    //             return el.className === 'copy-me';
+    //         }
+    //     })
+    //
+    //     dragulaService.setOptions('bag-webpart', {
+    //         moves: function(el, source, handle, sibling) {
+    //            console.log('move wp');
+    //            console.log(el, source, handle, sibling);
+    //            return handle.classList.contains('headertext') || el.className === 'copy-me';
+    //         },
+    //         copy: function(el, source) {
+    //             console.log(el)
+    //             return el.className === 'copy-me';
+    //         }
+    //     })
+    //
+    // }
     slideoutComponent.prototype.toggleEdit = function () {
         console.log('click');
         this.pagina['edit'] = !this.pagina['edit'];
@@ -84,10 +85,9 @@ var slideoutComponent = (function () {
     slideoutComponent = __decorate([
         core_1.Component({
             selector: 'slideout',
-            templateUrl: 'app/slideout.component.html',
-            directives: [ng2_dragula_1.Dragula, components_1.FaComponent]
+            templateUrl: 'app/slideout.component.html'
         }), 
-        __metadata('design:paramtypes', [ng2_dragula_1.DragulaService])
+        __metadata('design:paramtypes', [])
     ], slideoutComponent);
     return slideoutComponent;
 }());

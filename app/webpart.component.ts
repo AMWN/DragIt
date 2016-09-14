@@ -1,29 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import 'rxjs/Rx';
-import {Dragula, DragulaService} from 'ng2-dragula/ng2-dragula';
-import { datumComponent } from './controls/datum.component';
-import { tekstComponent } from './controls/tekst.component';
-import { nummerComponent } from './controls/nummer.component';
-import { urlComponent } from './controls/url.component';
-import { memoComponent } from './controls/memo.component';
-import { bijlageComponent } from './controls/bijlage.component';
-import { janeeComponent } from './controls/janee.component';
-import { url2Component } from './controls/url2.component';
-
 
 @Component({
     selector: 'webpart',
     templateUrl: 'app/webpart.component.html',
-    directives: [datumComponent,
-        tekstComponent,
-        nummerComponent,
-        urlComponent,
-        url2Component,
-        memoComponent,
-        bijlageComponent,
-        janeeComponent,
-        Dragula],
 })
 
 export class webpartComponent {
@@ -46,8 +25,4 @@ export class webpartComponent {
       this.webpart.velden.splice(index, 1);
   }
 
-
-    constructor(private dragulaService: DragulaService) {
-
-    }
 }

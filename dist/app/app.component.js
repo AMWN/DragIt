@@ -11,11 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/Rx');
-var pagina_service_1 = require('./services/pagina.service');
-var webpart_component_1 = require('./webpart.component');
 var ng2_dragula_1 = require('ng2-dragula/ng2-dragula');
-var slideout_component_1 = require('./slideout.component');
-var generatedownloadurl_pipe_1 = require('./pipes/generatedownloadurl.pipe');
+var pagina_service_1 = require('./services/pagina.service');
 var WEBPARTS = [
     { omschrijving: "Algemeen",
         velden: [{
@@ -39,14 +36,37 @@ var WEBPARTS = [
     }
 ];
 var AppComponent = (function () {
-    function AppComponent(http, window, paginaService, dragulaService) {
+    function AppComponent(http, paginaService, dragulaService) {
         this.paginaService = paginaService;
         this.dragulaService = dragulaService;
         this.pagina = {};
         this.webparts = WEBPARTS;
-        http.get(this.getParameterByName("dataurl") + "?callback=JSON_CALLBACK")
-            .map(this.extractData)
-            .subscribe(this.appendTohead);
+        dragulaService.setOptions('bag-one', {
+            // moves: function(el, source, handle, sibling) {
+            //    console.log('move one');
+            //    console.log(el, source, handle, sibling);
+            //    el.className === 'copy-me';;
+            // },
+            copy: function (el, source) {
+                console.log('copy one');
+                console.log(el);
+                return el.className === 'copy-me';
+            }
+        });
+        dragulaService.setOptions('bag-webpart', {
+            moves: function (el, source, handle, sibling) {
+                console.log('move wp');
+                console.log(el, source, handle, sibling);
+                return handle.classList.contains('headertext') || el.className === 'copy-me';
+            },
+            copy: function (el, source) {
+                console.log(el);
+                return el.className === 'copy-me';
+            }
+        });
+        // http.get(this.getParameterByName("dataurl") + "?callback=JSON_CALLBACK")
+        //     .map(this.extractData)
+        //     .subscribe(this.appendTohead)
     }
     AppComponent.prototype.toggleEdit = function () {
         this.edit = !this.edit;
@@ -98,12 +118,9 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            templateUrl: 'app/app.component.html',
-            directives: [webpart_component_1.webpartComponent, ng2_dragula_1.Dragula, slideout_component_1.slideoutComponent],
-            viewProviders: [ng2_dragula_1.DragulaService, pagina_service_1.PaginaService],
-            pipes: [generatedownloadurl_pipe_1.generateDownloadurl]
+            templateUrl: 'app/app.component.html'
         }), 
-        __metadata('design:paramtypes', [http_1.Http, Window, pagina_service_1.PaginaService, ng2_dragula_1.DragulaService])
+        __metadata('design:paramtypes', [http_1.Http, pagina_service_1.PaginaService, ng2_dragula_1.DragulaService])
     ], AppComponent);
     return AppComponent;
 }());

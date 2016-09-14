@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ng2_dragula_1 = require('ng2-dragula/ng2-dragula');
 var datumComponent = (function () {
     function datumComponent() {
         this.onDelete = new core_1.EventEmitter();
@@ -35,8 +34,7 @@ var datumComponent = (function () {
     datumComponent = __decorate([
         core_1.Component({
             selector: 'datum',
-            templateUrl: 'app/controls/datum.component.html',
-            directives: [ng2_dragula_1.Dragula]
+            templateUrl: 'app/controls/datum.component.html'
         }), 
         __metadata('design:paramtypes', [])
     ], datumComponent);

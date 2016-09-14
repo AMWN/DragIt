@@ -9,19 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-require('rxjs/Rx');
-var ng2_dragula_1 = require('ng2-dragula/ng2-dragula');
-var datum_component_1 = require('./controls/datum.component');
-var tekst_component_1 = require('./controls/tekst.component');
-var nummer_component_1 = require('./controls/nummer.component');
-var url_component_1 = require('./controls/url.component');
-var memo_component_1 = require('./controls/memo.component');
-var bijlage_component_1 = require('./controls/bijlage.component');
-var janee_component_1 = require('./controls/janee.component');
-var url2_component_1 = require('./controls/url2.component');
 var webpartComponent = (function () {
-    function webpartComponent(dragulaService) {
-        this.dragulaService = dragulaService;
+    function webpartComponent() {
     }
     webpartComponent.prototype.toggleEdit = function () {
         this.edit = !this.edit;
@@ -47,17 +36,8 @@ var webpartComponent = (function () {
         core_1.Component({
             selector: 'webpart',
             templateUrl: 'app/webpart.component.html',
-            directives: [datum_component_1.datumComponent,
-                tekst_component_1.tekstComponent,
-                nummer_component_1.nummerComponent,
-                url_component_1.urlComponent,
-                url2_component_1.url2Component,
-                memo_component_1.memoComponent,
-                bijlage_component_1.bijlageComponent,
-                janee_component_1.janeeComponent,
-                ng2_dragula_1.Dragula],
         }), 
-        __metadata('design:paramtypes', [ng2_dragula_1.DragulaService])
+        __metadata('design:paramtypes', [])
     ], webpartComponent);
     return webpartComponent;
 }());
