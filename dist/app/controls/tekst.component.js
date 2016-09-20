@@ -34,7 +34,7 @@ var tekstComponent = (function () {
     tekstComponent = __decorate([
         core_1.Component({
             selector: 'tekst',
-            templateUrl: 'app/controls/tekst.component.html'
+            template: "\n    <!--Tekstregel control-->\n    <div>\n      <td>\n          <button *ngIf=\"edit\" (click)=\"deleteVeld(veld)\" class=\"webbutton webbutton-image-only cursorpointer\" style=\"white-space:nowrap;\">\n              <span class=\"webbuttonimagecontainer\"><img class=\"webbutton-image\" src=\"app/images/delete.png\"></span>\n          </button>\n      </td>\n      <td class=\"label\" valign=\"top\">\n        <span *ngIf=\"!edit\" (dblclick)=\"toggleEdit($event)\" style=\"white-space:nowrap;\">{{veld.label}}</span>\n        <input *ngIf=\"edit\" (dblclick)=\"toggleEdit($event)\" class=\"control\" [(ngModel)]=\"veld.label\" type=\"text\">\n      </td>\n      <td class=\"value\" valign=\"top\">\n        <div class=\"readonlyMemo doWrap\">\n          <span *ngIf=\"!edit && !pagina.edit\" (dblclick)=\"toggleEdit($event)\" >{{veld.waarde}}</span>\n          <input *ngIf=\"edit || pagina.edit\"  (dblclick)=\"toggleEdit($event)\" class=\"control\" style=\"width: 54em;\" [(ngModel)]=\"veld.waarde\" type=\"text\">\n        </div>\n      </td>\n    </div><!--Tekstregel control-->\n\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], tekstComponent);

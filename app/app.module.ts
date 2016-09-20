@@ -23,7 +23,7 @@ import { janeeComponent } from './controls/janee.component';
 import { url2Component } from './controls/url2.component';
 import {enableProdMode} from '@angular/core';
 
-// enableProdMode();
+enableProdMode();
 
 @NgModule({
     declarations: [ AppComponent,

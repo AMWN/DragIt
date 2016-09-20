@@ -27,7 +27,8 @@ var memo_component_1 = require('./controls/memo.component');
 var bijlage_component_1 = require('./controls/bijlage.component');
 var janee_component_1 = require('./controls/janee.component');
 var url2_component_1 = require('./controls/url2.component');
-// enableProdMode();
+var core_2 = require('@angular/core');
+core_2.enableProdMode();
 var AppModule = (function () {
     function AppModule() {
     }

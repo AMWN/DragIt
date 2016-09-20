@@ -34,7 +34,7 @@ var nummerComponent = (function () {
     nummerComponent = __decorate([
         core_1.Component({
             selector: 'nummer',
-            templateUrl: 'app/controls/nummer.component.html'
+            template: "\n    <!--Cijfer control-->\n    <div>\n      <td>\n          <button *ngIf=\"edit\" (click)=\"deleteVeld(veld)\" class=\"webbutton webbutton-image-only cursorpointer\" style=\"white-space:nowrap;\">\n              <span class=\"webbuttonimagecontainer\"><img class=\"webbutton-image\" src=\"app/images/delete.png\"></span>\n          </button>\n      </td>\n      <td class=\"label\" valign=\"top\">\n        <label *ngIf=\"!edit\" style=\"white-space:nowrap;\">{{veld.label}}</label>\n        <input *ngIf=\"edit\" (dblclick)=\"toggleEdit($event)\" class=\"control\" [(ngModel)]=\"veld.label\" type=\"text\">\n      </td>\n      <td class=\"value valuerows0\" valign=\"top\">\n        <div>\n          <span *ngIf=\"!edit && !pagina.edit\" (dblclick)=\"toggleEdit($event)\"  title=\"Nummer\">{{veld.waarde}}</span>\n          <input *ngIf=\"edit || pagina.edit\" (dblclick)=\"toggleEdit($event)\" class=\"control\" [(ngModel)]=\"veld.waarde\" type=\"text\">\n        </div>\n      </td>\n    </div><!--Cijfer control-->\n\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], nummerComponent);

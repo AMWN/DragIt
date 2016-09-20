@@ -34,7 +34,7 @@ var memoComponent = (function () {
     memoComponent = __decorate([
         core_1.Component({
             selector: 'memo',
-            templateUrl: 'app/controls/memo.component.html'
+            template: "\n    <!--Tekstblok control-->\n    <div>\n      <td>\n          <button *ngIf=\"edit\" (click)=\"deleteVeld(veld)\" class=\"webbutton webbutton-image-only cursorpointer\" style=\"white-space:nowrap;\">\n              <span class=\"webbuttonimagecontainer\"><img class=\"webbutton-image\" src=\"app/images/delete.png\"></span>\n          </button>\n      </td>\n      <td class=\"label\" valign=\"top\">\n        <label *ngIf=\"!edit\" (dblclick)=\"toggleEdit($event)\" style=\"white-space:nowrap;\">{{veld.label}}</label>\n        <input *ngIf=\"edit\" (dblclick)=\"toggleEdit($event)\" class=\"control\" [(ngModel)]=\"veld.label\" type=\"text\">\n      </td>\n      <td class=\"value valuerows{{veld.regels}}\" valign=\"top\">\n        <div>\n          <table cellpadding=\"0\" cellspacing=\"0\">\n            <tbody>\n              <tr>\n                <td valign=\"top\">\n                  <div *ngIf=\"!edit && !pagina.edit\" (dblclick)=\"toggleEdit($event)\" style=\"width: 66%\" class=\"readonlyMemo doWrap fixedHeight memoRows{{veld.regels}}\">\n                    <span  >{{veld.waarde}}</span>\n                  </div>\n                  <textarea *ngIf=\"edit || pagina.edit\"  (dblclick)=\"toggleEdit($event)\"  [(ngModel)]=\"veld.waarde\"  cols=\"100\"></textarea>\n                </td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n      </td>\n    </div><!--Tekstblok control-->\n"
         }), 
         __metadata('design:paramtypes', [])
     ], memoComponent);

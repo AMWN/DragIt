@@ -12,65 +12,56 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/Rx');
 var ng2_dragula_1 = require('ng2-dragula/ng2-dragula');
-var pagina_service_1 = require('./services/pagina.service');
-var WEBPARTS = [
-    { omschrijving: "Algemeen",
-        velden: [{
-                type: "tekst",
-                label: "Label",
-                waarde: "Omschrijving",
-                regels: 1,
-                omschrijving: ""
-            }],
-        icon: 'wpforms'
-    }, {
-        omschrijving: "Algemeen",
-        velden: [{
-                type: "tekst",
-                label: "Label",
-                waarde: "Omschrijving",
-                regels: 1,
-                omschrijving: ""
-            }],
-        icon: 'wpforms'
-    }
-];
 var AppComponent = (function () {
-    function AppComponent(http, paginaService, dragulaService) {
-        this.paginaService = paginaService;
+    function AppComponent(http, dragulaService) {
         this.dragulaService = dragulaService;
-        this.pagina = {};
-        this.webparts = WEBPARTS;
+        this.pagina = {
+            "titel": "Titel",
+            "omschrijving": "Omschrijving (nummer)",
+            "webparts": [{
+                    "id": 1,
+                    "volgnummer": 1,
+                    "omschrijving": "Algemeen",
+                    "velden": [{
+                            "id": 1,
+                            "volgnummer": 1,
+                            "type": "datum",
+                            "label": "Datum",
+                            "waarde": "15-01-1985"
+                        }, {
+                            "id": 2,
+                            "volgnummer": 2,
+                            "type": "tekst",
+                            "label": "Omschrijving",
+                            "omschrijving": "Omschrijving"
+                        }]
+                }],
+            "edit": true
+        };
         dragulaService.setOptions('bag-one', {
-            // moves: function(el, source, handle, sibling) {
-            //    console.log('move one');
-            //    console.log(el, source, handle, sibling);
-            //    el.className === 'copy-me';;
-            // },
             copy: function (el, source) {
-                console.log('copy one');
-                console.log(el);
                 return el.className === 'copy-me';
             }
         });
         dragulaService.setOptions('bag-webpart', {
             moves: function (el, source, handle, sibling) {
-                console.log('move wp');
-                console.log(el, source, handle, sibling);
                 return handle.classList.contains('headertext') || el.className === 'copy-me';
             },
             copy: function (el, source) {
-                console.log(el);
                 return el.className === 'copy-me';
             }
         });
-        // http.get(this.getParameterByName("dataurl") + "?callback=JSON_CALLBACK")
-        //     .map(this.extractData)
-        //     .subscribe(this.appendTohead)
+        //ophalen van stylesheet en javascript InSite of OutSite
+        if (this.getParameterByName("dataurl") !== "0") {
+            http.get(this.getParameterByName("dataurl") + "?callback=JSON_CALLBACK")
+                .map(this.extractData)
+                .subscribe(this.appendTohead);
+        }
     }
     AppComponent.prototype.toggleEdit = function () {
         this.edit = !this.edit;
     };
+    //change listener voor upload van JSON definitie
     AppComponent.prototype.changeListener = function ($event) {
         this.readThis($event.target);
     };
@@ -83,6 +74,7 @@ var AppComponent = (function () {
         };
         myReader.readAsText(file);
     };
+    //ondersteunende functies voor ophalen van CSS stylesheet InSite
     AppComponent.prototype.extractData = function (res) {
         var body = res.text().split("(")[1];
         body = body.substring(0, body.length - 1);
@@ -106,21 +98,17 @@ var AppComponent = (function () {
         var regex = new RegExp(regexS);
         var results = regex.exec(window.location.href);
         if (results === null)
-            return "";
+            return "0";
         else
             return decodeURIComponent(results[1].replace(/\+/g, " "));
     };
     ;
-    AppComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.paginaService.getPagina().subscribe(function (data) { return _this.pagina = data; }, function (error) { return _this.errorMessage = error; });
-    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
             templateUrl: 'app/app.component.html'
         }), 
-        __metadata('design:paramtypes', [http_1.Http, pagina_service_1.PaginaService, ng2_dragula_1.DragulaService])
+        __metadata('design:paramtypes', [http_1.Http, ng2_dragula_1.DragulaService])
     ], AppComponent);
     return AppComponent;
 }());
