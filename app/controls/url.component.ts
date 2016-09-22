@@ -5,14 +5,14 @@ import { Veld } from './veld';
     selector: 'url',
     template: `
     <!--Link control-->
-    <div >
+    <div (keyup.escape)="toggleEdit($event)">
         <td>
             <button *ngIf="edit" (click)="deleteVeld(veld)" class="webbutton webbutton-image-only cursorpointer" style="white-space:nowrap;">
-                <span class="webbuttonimagecontainer"><img class="webbutton-image" src="app/images/delete.png"></span>
+                <span class="webbuttonimagecontainer"><img class="webbutton-image" src="images/delete.png"></span>
             </button>
         </td>
         <td class="label" valign="top"><label *ngIf="!edit" (dblclick)="toggleEdit($event)" style="white-space:nowrap;">{{veld.label}}</label>
-        <input *ngIf="edit" (dblclick)="toggleEdit($event)" class="control" [(ngModel)]="veld.label" type="text">
+        <input *ngIf="edit" class="control" [(ngModel)]="veld.label" type="text" >
     </td>
     <td *ngIf="!pagina.edit && !edit" class="value valuerows0" valign="top">
         <div class="searchControl">
@@ -25,26 +25,42 @@ import { Veld } from './veld';
                 <tbody>
                     <tr>
                         <td valign="middle">
-                            <input class="control control" type="text" [(ngModel)]="veld.waarde" style="width: 85px;">
+                            <input class="control control" type="text" [(ngModel)]="veld.waarde" style="width: 85px;" (dblclick)="toggleEdit($event)"  [ngClass]="{'disabled' : veld.disabled && !edit}">
                         </td>
                         <td valign="middle">
                             <button title="Zoeken" class="webbutton webbutton-image-only cursorpointer" style="white-space:nowrap;">
                                 <span class="webbuttonimagecontainer">
-                                    <img class="webbutton-image" alt="Zoeken" src="app/images/Search.png">
+                                    <img *ngIf="!veld.disabled" class="webbutton-image" alt="Zoeken" src="images/Search.png">
+                                    <img *ngIf="veld.disabled" class="webbutton-image" alt="Zoeken" src="images/SearchDisabled.png">
                                 </span>
                             </button>
                         </td>
                         <td class="text" valign="middle">
                             <a *ngIf="!edit" (dblclick)="toggleEdit($event)" class="linkcontrol description" href="#" linktype="5">{{veld.omschrijving}}</a>
-                            <input *ngIf="edit" (dblclick)="toggleEdit($event)" [(ngModel)]="veld.omschrijving" class="control" type="text">
-                        </td>
-                        <td valign="middle">
-                            <img class="validatoricon" alt="Fout" src="app/images/Error.png" style="display:inline-block;visibility:hidden;">
+                            <input *ngIf="edit" [(ngModel)]="veld.omschrijving" (dblclick)="toggleEdit($event)" class="control" type="text" [disabled]="veld.disabled" >
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
+    </td>
+    <td valign="middle" *ngIf="veld.verplicht">
+      <img class="validatoricon" src="images/Required.png" style="display:inline-block;">
+    </td>
+    <td valign="middle" *ngIf="edit" >
+      <input [(ngModel)]="veld.disabled" tabindex="-1" title="Vinkje" class="control checkbox" type="checkbox">
+    </td>
+    <td valign="middle" *ngIf="edit" >
+        <label style="white-space:nowrap;">Disabled</label>
+    </td>
+    <td valign="middle" *ngIf="edit" >
+      <input [(ngModel)]="veld.verplicht" tabindex="-1" title="Vinkje" class="control checkbox" type="checkbox">
+    </td>
+    <td valign="middle" *ngIf="edit" >
+      <label style="white-space:nowrap;">Verplicht</label>
+    </td>
+    <td valign="middle" *ngIf="edit" >
+      <fa [name]="'save'" (click)="toggleEdit($event)" title="Escape"></fa>
     </td>
     </div>
     <!--Link control-->

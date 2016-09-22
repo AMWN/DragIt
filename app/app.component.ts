@@ -10,7 +10,7 @@ import { DragulaService } from 'ng2-dragula/ng2-dragula';
 
 export class AppComponent {
     public pagina = {
-        "titel": "Titel",
+        "titel": "Paginatitel",
         "omschrijving": "Omschrijving (nummer)",
         "webparts": [{
             "id": 1,
@@ -28,15 +28,70 @@ export class AppComponent {
                     "type": "tekst",
                     "label": "Omschrijving",
                     "omschrijving": "Omschrijving"
-                }]
-        }],
+                }, {
+                    "type": "nummer",
+                    "label": "Nummer",
+                    "waarde": "1200,00",
+                    "regels": 5,
+                    "omschrijving": "",
+                    "icon": "euro"
+                }, {
+                    "type": "memo",
+                    "label": "Memo",
+                    "waarde": "Lorem Khaled Ipsum is a major key to success. Celebrate success right, the only way, apple. Another one. The other day the grass was brown, now it’s green because I ain’t give up. Never surrender. It’s important to use cocoa butter. It’s the key to more success, why not live smooth? Why live rough? Fan luv. Mogul talk. Wraith talk.",
+                    "regels": 3,
+                    "omschrijving": "",
+                    "icon": "commenting"
+                }, {
+                    "type": "url",
+                    "label": "Link1",
+                    "waarde": "www.afas.nl",
+                    "regels": 1,
+                    "omschrijving": "Omschrijving",
+                    "icon": "link"
+                }, {
+                    "type": "url2",
+                    "label": "Link2",
+                    "waarde": "1",
+                    "regels": 1,
+                    "omschrijving": "Omschrijving",
+                    "icon": "unlink"
+                }, {
+                    "type": "janee",
+                    "label": "Janee",
+                    "waarde": "1",
+                    "regels": 1,
+                    "omschrijving": "",
+                    "icon": "check-square"
+                }, {
+                    "type": "bijlage",
+                    "label": "Bijlage",
+                    "waarde": "Factuur 20160001.pdf",
+                    "regels": 1,
+                    "omschrijving": "",
+                    "icon": "file"
+                }
+            ]
+        }, {
+                "omschrijving": "Algemeen",
+                "velden": [{
+                    "type": "tekst",
+                    "label": "Label",
+                    "waarde": "Omschrijving",
+                    "regels": 1,
+                    "omschrijving": ""
+                }
+                ],
+                "icon": "wpforms"
+            }
+        ],
         "edit": true
-    };
+    }
 
     private errorMessage;
     public data: string;
-    private edit;
-    
+    private edit: boolean;
+
     private toggleEdit() {
         this.edit = !this.edit;
     }
@@ -97,7 +152,6 @@ export class AppComponent {
         private dragulaService: DragulaService,
     ) {
 
-
         dragulaService.setOptions('bag-one', {
             copy: function(el, source) {
                 return el.className === 'copy-me';
@@ -114,7 +168,7 @@ export class AppComponent {
         })
 
         //ophalen van stylesheet en javascript InSite of OutSite
-        if (this.getParameterByName("dataurl") !== "0" ) {
+        if (this.getParameterByName("dataurl") !== "0") {
             http.get(this.getParameterByName("dataurl") + "?callback=JSON_CALLBACK")
                 .map(this.extractData)
                 .subscribe(this.appendTohead)

@@ -5,7 +5,7 @@ import { Veld } from './veld';
     selector: 'datum',
     template: `
     <!--Datum control-->
-    <div >
+    <div (keyup.escape)="toggleEdit($event)">
         <td>
             <button *ngIf="edit" (click)="deleteVeld(veld)" class="webbutton webbutton-image-only cursorpointer" style="white-space:nowrap;">
                 <span class="webbuttonimagecontainer"><img class="webbutton-image" src="app/images/delete.png"></span>
@@ -13,7 +13,7 @@ import { Veld } from './veld';
         </td>
         <td class="label" valign="top">
             <label *ngIf="!edit" (dblclick)="toggleEdit($event)" style="white-space:nowrap;">{{veld.label}}</label>
-            <input *ngIf="edit" (dblclick)="toggleEdit($event)" class="control" [(ngModel)]="veld.label" type="text">
+            <input *ngIf="edit"  class="control" [(ngModel)]="veld.label" type="text">
         </td>
         <td *ngIf="!edit && !pagina.edit" (dblclick)="toggleEdit($event)" class="value valuerows0" valign="top">
             <div>
@@ -25,19 +25,35 @@ import { Veld } from './veld';
                 <table cellpadding="0" cellspacing="0">
                     <tbody>
                         <tr>
-                            <td valign="middle"><input class="control" type="text" [(ngModel)]="veld.waarde" maxlength="10" style="width:85px;" _anta_event="36"></td>
+                            <td valign="middle"><input class="control" type="text" [(ngModel)]="veld.waarde" maxlength="10" style="width:85px;" [ngClass]="{'disabled' : veld.disabled && !edit}"></td>
                             <td valign="middle">
-                                <button title="Datum kiezen" class="webbutton webbutton-image-only cursorpointer" switchable="0" pressed="0" style="white-space:nowrap;" _anta_event="34">
-                                    <span class="webbuttonimagecontainer"><img class="webbutton-image" alt="Datum kiezen" src="app/images/Calendar.png" _anta_event="35"></span>
+                                <button title="Datum kiezen" class="webbutton webbutton-image-only cursorpointer"  switchable="0" pressed="0" style="white-space:nowrap;">
+                                    <span class="webbuttonimagecontainer"><img class="webbutton-image" alt="Datum kiezen" src="app/images/Calendar.png"></span>
                                 </button>
                             </td>
-                            <td valign="middle"><img id="P_C_W_1E6CCAB049866C5348E57B0021A8F4EE_Cm_For_T101_DaSt_ValidatorIcon" class="validatoricon" alt="Fout" src="app/images/Error.png" style="display:inline-block;visibility:hidden;" _anta_event="37"></td>
+                            <td valign="middle" *ngIf="veld.verplicht">
+                              <img class="validatoricon" src="images/Required.png" style="display:inline-block;">
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </td>
-
+        <td valign="middle" *ngIf="edit" >
+          <input [(ngModel)]="veld.disabled" tabindex="-1" title="Vinkje" class="control checkbox" type="checkbox">
+        </td>
+        <td valign="middle" *ngIf="edit" >
+            <label style="white-space:nowrap;">Disabled</label>
+        </td>
+        <td valign="middle" *ngIf="edit" >
+          <input [(ngModel)]="veld.verplicht" tabindex="-1" title="Vinkje" class="control checkbox" type="checkbox">
+        </td>
+        <td valign="middle" *ngIf="edit" >
+          <label style="white-space:nowrap;">Verplicht</label>
+        </td>
+        <td valign="middle" *ngIf="edit" >
+          <fa [name]="'save'" (click)="toggleEdit($event)" title="Escape"></fa>
+        </td>
     </div>
     <!--Datum control-->
     `

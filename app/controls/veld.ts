@@ -5,4 +5,6 @@ export interface Veld {
   omschrijving: string;
   regels: number;
   icon?: string;
+  disabled?: boolean;
+  verplicht?: boolean;
 }

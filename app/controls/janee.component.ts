@@ -8,7 +8,7 @@ import { Veld } from './veld';
     <tr>
         <td class="label" valign="top"></td>
         <td class="value valuerows0" valign="top">
-            <div>
+            <div (keyup.escape)="toggleEdit($event)">
                 <table class="checkboxControl" cellpadding="0" cellspacing="0">
                     <tbody>
                         <tr>
@@ -19,16 +19,25 @@ import { Veld } from './veld';
                             </td>
                             <td valign="middle">
                                 <input *ngIf="!edit && !pagina.edit" [(ngModel)]="veld.waarde" tabindex="-1" title="Vinkje" class="control checkbox disabled" type="checkbox" autocomplete="off" disabled="disabled">
-                                <input *ngIf="edit || pagina.edit" [(ngModel)]="veld.waarde" tabindex="-1" title="Vinkje" class="control checkbox" type="checkbox" autocomplete="off">
+                                <input *ngIf="edit || pagina.edit" [(ngModel)]="veld.waarde" tabindex="-1" title="Vinkje" class="control checkbox" type="checkbox" autocomplete="off" [disabled]="veld.disabled" >
                             </td>
                             <td valign="middle">
                                 <label *ngIf="!edit" (dblclick)="toggleEdit($event)" style="white-space:nowrap;">{{veld.label}}</label>
-                                <input *ngIf="edit" (dblclick)="toggleEdit($event)" class="control" [(ngModel)]="veld.label" type="text">
+                                <input *ngIf="edit" class="control" [(ngModel)]="veld.label" type="text">
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+        </td>
+        <td valign="middle" *ngIf="edit" >
+          <input [(ngModel)]="veld.disabled" tabindex="-1" title="Vinkje" class="control checkbox" type="checkbox">
+        </td>
+        <td valign="middle" *ngIf="edit" >
+            <label style="white-space:nowrap;">Disabled</label>
+        </td>
+        <td valign="middle" *ngIf="edit" >
+          <fa [name]="'save'" (click)="toggleEdit($event)" title="Escape"></fa>
         </td>
     </tr>
     <!--Ja/nee control-->
