@@ -49,7 +49,7 @@ var AppModule = (function () {
                 janee_component_1.janeeComponent
             ],
             imports: [platform_browser_1.BrowserModule, http_1.HttpModule, ng2_dragula_1.DragulaModule, forms_1.FormsModule],
-            providers: [pagina_service_1.PaginaService, Window],
+            providers: [pagina_service_1.PaginaService],
             bootstrap: [app_component_1.AppComponent],
         }), 
         __metadata('design:paramtypes', [])

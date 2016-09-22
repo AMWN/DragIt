@@ -19,7 +19,7 @@
     'rxjs':                       { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
     'ng2-dragula':                { format: 'cjs', defaultExtension: 'js'},
-    'angular2-fontawesome':       { defaultExtension: 'js' },
+    'angular2-fontawesome':       { defaultExtension: 'js' }
   };
   var ngPackageNames = [
     'common',

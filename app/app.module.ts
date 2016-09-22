@@ -41,7 +41,7 @@ enableProdMode();
                     janeeComponent
                     ],
     imports:      [BrowserModule, HttpModule, DragulaModule, FormsModule ],
-    providers:    [PaginaService, Window],
+    providers:    [PaginaService],
     bootstrap:    [AppComponent],
 })
 
