@@ -56,7 +56,7 @@ import { Veld } from './veld';
           <label style="white-space:nowrap;">Verplicht</label>
         </td>
         <td valign="middle" *ngIf="edit" >
-          <fa [name]="'save'" (click)="toggleEdit($event)"></fa>
+          <fa [name]="'save'" (click)="toggleEdit($event)" title="escape"></fa>
         </td>
     </div>
     <!--Bijlage control-->
