@@ -18,7 +18,7 @@ import { Veld } from './veld';
       <td class="value valuerows0" valign="top">
         <div>
           <span *ngIf="!edit && !pagina.edit" (dblclick)="toggleEdit($event)"  title="Nummer">{{veld.waarde}}</span>
-          <input *ngIf="edit || pagina.edit" (dblclick)="toggleEdit($event)" class="control" [(ngModel)]="veld.waarde" type="text" [ngClass]="{'disabled' : veld.disabled && !edit}">
+          <input *ngIf="edit || pagina.edit" (dblclick)="toggleEdit($event)" class="control" [(ngModel)]="veld.waarde" type="text" [ngClass]="{'disabled' : veld.disabled && !veld.verplicht}">
         </div>
       </td>
       <td valign="middle" *ngIf="veld.verplicht">

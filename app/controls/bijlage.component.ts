@@ -24,7 +24,7 @@ import { Veld } from './veld';
                             <td valign="middle">
                                 <form style="margin:0px;display:inline-block;">
                                     <button class="webbutton webbutton-text-only cursorpointer" style="white-space: nowrap;">
-                                        <span class="webbutton-text" style="white-space:nowrap" [ngClass]="{'disabled' : veld.disabled && !edit}" >Bestand kiezen</span>
+                                        <span class="webbutton-text" style="white-space:nowrap" [ngClass]="{'disabled' : veld.disabled && !veld.verplicht}" >Bestand kiezen</span>
                                     </button>
                                     <div class="fileDropZone">
                                         <span style="white-space:nowrap;">Of

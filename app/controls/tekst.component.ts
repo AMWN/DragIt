@@ -19,7 +19,7 @@ import { Veld } from './veld';
       <td class="value" valign="top">
         <div class="readonlyMemo doWrap">
           <span *ngIf="!edit && !pagina.edit" (dblclick)="toggleEdit($event)" >{{veld.waarde}}</span>
-          <input *ngIf="edit || pagina.edit"  (dblclick)="toggleEdit($event)" class="control" style="width: 54em;" [(ngModel)]="veld.waarde" type="text"  [ngClass]="{'disabled' : veld.disabled && !edit}">
+          <input *ngIf="edit || pagina.edit"  (dblclick)="toggleEdit($event)" class="control" style="width: 54em;" [(ngModel)]="veld.waarde" type="text"  [ngClass]="{'disabled' : veld.disabled && !veld.verplicht}">
         </div>
       </td>
       <td valign="middle" *ngIf="veld.verplicht">

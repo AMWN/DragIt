@@ -3,9 +3,10 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { AppComponent }   from './app.component';
 import { FormsModule } from '@angular/forms';
 
-import { HttpModule }    from '@angular/http';
+import { HttpModule, JsonpModule }    from '@angular/http';
 import { DragulaModule  } from 'ng2-dragula/ng2-dragula';
 import { FaComponent } from 'angular2-fontawesome/components';
+
 
 import { PaginaService } from './services/pagina.service';
 import { webpartComponent } from './webpart.component';
@@ -23,7 +24,7 @@ import { janeeComponent } from './controls/janee.component';
 import { url2Component } from './controls/url2.component';
 import {enableProdMode} from '@angular/core';
 
-enableProdMode();
+//enableProdMode();
 
 @NgModule({
     declarations: [ AppComponent,
@@ -40,7 +41,7 @@ enableProdMode();
                     bijlageComponent,
                     janeeComponent
                     ],
-    imports:      [BrowserModule, HttpModule, DragulaModule, FormsModule ],
+    imports:      [BrowserModule, HttpModule, DragulaModule, FormsModule, JsonpModule ],
     providers:    [PaginaService],
     bootstrap:    [AppComponent],
 })

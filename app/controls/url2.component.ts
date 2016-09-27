@@ -26,7 +26,7 @@ import { Veld } from './veld';
                     <tbody>
                         <tr>
                             <td valign="middle">
-                                <input class="control control" type="text" [(ngModel)]="veld.waarde" style="width: 85px;" (dblclick)="toggleEdit($event)"  [ngClass]="{'disabled' : veld.disabled && !edit}" >
+                                <input class="control control" type="text" [(ngModel)]="veld.waarde" style="width: 85px;" (dblclick)="toggleEdit($event)"  [ngClass]="{'disabled' : veld.disabled && !veld.verplicht}" >
                             </td>
                             <td valign="middle">
                                 <button title="Zoeken" class="webbutton webbutton-image-only cursorpointer" style="white-space:nowrap;">

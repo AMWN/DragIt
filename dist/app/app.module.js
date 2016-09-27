@@ -27,8 +27,7 @@ var memo_component_1 = require('./controls/memo.component');
 var bijlage_component_1 = require('./controls/bijlage.component');
 var janee_component_1 = require('./controls/janee.component');
 var url2_component_1 = require('./controls/url2.component');
-var core_2 = require('@angular/core');
-core_2.enableProdMode();
+//enableProdMode();
 var AppModule = (function () {
     function AppModule() {
     }
@@ -48,7 +47,7 @@ var AppModule = (function () {
                 bijlage_component_1.bijlageComponent,
                 janee_component_1.janeeComponent
             ],
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, ng2_dragula_1.DragulaModule, forms_1.FormsModule],
+            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, ng2_dragula_1.DragulaModule, forms_1.FormsModule, http_1.JsonpModule],
             providers: [pagina_service_1.PaginaService],
             bootstrap: [app_component_1.AppComponent],
         }), 

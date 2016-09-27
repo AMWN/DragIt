@@ -25,7 +25,7 @@ import { Veld } from './veld';
                   <div *ngIf="!edit && !pagina.edit" (dblclick)="toggleEdit($event)" style="width: 66%" class="readonlyMemo doWrap fixedHeight memoRows{{veld.regels}}">
                     <span  >{{veld.waarde}}</span>
                   </div>
-                  <textarea *ngIf="edit || pagina.edit"  (dblclick)="toggleEdit($event)"  [(ngModel)]="veld.waarde"  cols="100" [disabled]="veld.disabled" [ngClass]="{'disabled' : veld.disabled && !edit}"></textarea>
+                  <textarea *ngIf="edit || pagina.edit"  (dblclick)="toggleEdit($event)"  [(ngModel)]="veld.waarde"  cols="100" [disabled]="veld.disabled" [ngClass]="{'disabled' : veld.disabled && !veld.verplicht}"></textarea>
                 </td>
               </tr>
             </tbody>

@@ -12,87 +12,12 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/Rx');
 var ng2_dragula_1 = require('ng2-dragula/ng2-dragula');
+var startpage_1 = require('./startpage');
+var http_2 = require('@angular/http');
 var AppComponent = (function () {
-    function AppComponent(http, dragulaService) {
-        this.dragulaService = dragulaService;
-        this.pagina = {
-            "titel": "Paginatitel",
-            "omschrijving": "Omschrijving (nummer)",
-            "webparts": [{
-                    "id": 1,
-                    "volgnummer": 1,
-                    "omschrijving": "Algemeen",
-                    "velden": [{
-                            "id": 1,
-                            "volgnummer": 1,
-                            "type": "datum",
-                            "label": "Datum",
-                            "waarde": "15-01-1985"
-                        }, {
-                            "id": 2,
-                            "volgnummer": 2,
-                            "type": "tekst",
-                            "label": "Omschrijving",
-                            "omschrijving": "Omschrijving"
-                        }, {
-                            "type": "nummer",
-                            "label": "Nummer",
-                            "waarde": "1200,00",
-                            "regels": 5,
-                            "omschrijving": "",
-                            "icon": "euro"
-                        }, {
-                            "type": "memo",
-                            "label": "Memo",
-                            "waarde": "Lorem Khaled Ipsum is a major key to success. Celebrate success right, the only way, apple. Another one. The other day the grass was brown, now it’s green because I ain’t give up. Never surrender. It’s important to use cocoa butter. It’s the key to more success, why not live smooth? Why live rough? Fan luv. Mogul talk. Wraith talk.",
-                            "regels": 3,
-                            "omschrijving": "",
-                            "icon": "commenting"
-                        }, {
-                            "type": "url",
-                            "label": "Link1",
-                            "waarde": "www.afas.nl",
-                            "regels": 1,
-                            "omschrijving": "Omschrijving",
-                            "icon": "link"
-                        }, {
-                            "type": "url2",
-                            "label": "Link2",
-                            "waarde": "1",
-                            "regels": 1,
-                            "omschrijving": "Omschrijving",
-                            "icon": "unlink"
-                        }, {
-                            "type": "janee",
-                            "label": "Janee",
-                            "waarde": "1",
-                            "regels": 1,
-                            "omschrijving": "",
-                            "icon": "check-square"
-                        }, {
-                            "type": "bijlage",
-                            "label": "Bijlage",
-                            "waarde": "Factuur 20160001.pdf",
-                            "regels": 1,
-                            "omschrijving": "",
-                            "icon": "file"
-                        }
-                    ]
-                }, {
-                    "omschrijving": "Algemeen",
-                    "velden": [{
-                            "type": "tekst",
-                            "label": "Label",
-                            "waarde": "Omschrijving",
-                            "regels": 1,
-                            "omschrijving": ""
-                        }
-                    ],
-                    "icon": "wpforms"
-                }
-            ],
-            "edit": true
-        };
+    function AppComponent(http, dragulaService, jsonp) {
+        this.jsonp = jsonp;
+        this.pagina = startpage_1.Pagina;
         dragulaService.setOptions('bag-one', {
             copy: function (el, source) {
                 return el.className === 'copy-me';
@@ -106,13 +31,17 @@ var AppComponent = (function () {
                 return el.className === 'copy-me';
             }
         });
+    }
+    AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
         //ophalen van stylesheet en javascript InSite of OutSite
         if (this.getParameterByName("dataurl") !== "0") {
-            http.get(this.getParameterByName("dataurl") + "?callback=JSON_CALLBACK")
-                .map(this.extractData)
-                .subscribe(this.appendTohead);
+            this.jsonp
+                .get(this.getParameterByName("dataurl") + "?callback=JSONP_CALLBACK")
+                .map(function (response) { return response.json(); })
+                .subscribe(function (data) { return _this.appendTohead(data); });
         }
-    }
+    };
     AppComponent.prototype.toggleEdit = function () {
         this.edit = !this.edit;
     };
@@ -128,13 +57,6 @@ var AppComponent = (function () {
             _this.pagina = JSON.parse(myReader.result);
         };
         myReader.readAsText(file);
-    };
-    //ondersteunende functies voor ophalen van CSS stylesheet InSite
-    AppComponent.prototype.extractData = function (res) {
-        var body = res.text().split("(")[1];
-        body = body.substring(0, body.length - 1);
-        body = JSON.parse(body);
-        return body || {};
     };
     AppComponent.prototype.appendTohead = function (res) {
         var neutralStyleSheet = res.cssUrl.replace("integration", "neutraal");
@@ -163,7 +85,7 @@ var AppComponent = (function () {
             selector: 'my-app',
             templateUrl: 'app/app.component.html'
         }), 
-        __metadata('design:paramtypes', [http_1.Http, ng2_dragula_1.DragulaService])
+        __metadata('design:paramtypes', [http_1.Http, ng2_dragula_1.DragulaService, http_2.Jsonp])
     ], AppComponent);
     return AppComponent;
 }());

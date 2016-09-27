@@ -25,7 +25,7 @@ import { Veld } from './veld';
                 <table cellpadding="0" cellspacing="0">
                     <tbody>
                         <tr>
-                            <td valign="middle"><input class="control" type="text" [(ngModel)]="veld.waarde" maxlength="10" style="width:85px;" [ngClass]="{'disabled' : veld.disabled && !edit}"></td>
+                            <td valign="middle"><input class="control" type="text" [(ngModel)]="veld.waarde" maxlength="10" style="width:85px;" [ngClass]="{'disabled' : veld.disabled && !edit && !veld.verplicht} "></td>
                             <td valign="middle">
                                 <button title="Datum kiezen" class="webbutton webbutton-image-only cursorpointer"  switchable="0" pressed="0" style="white-space:nowrap;">
                                     <span class="webbuttonimagecontainer"><img class="webbutton-image" alt="Datum kiezen" src="app/images/Calendar.png"></span>

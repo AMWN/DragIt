@@ -11,7 +11,8 @@
     '@angular':                   'node_modules/@angular',
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
     'rxjs':                       'node_modules/rxjs',
-    'angular2-fontawesome':       'node_modules/angular2-fontawesome'
+    'angular2-fontawesome':       'node_modules/angular2-fontawesome',
+    'angularfire2' :              'node_modules/angularfire2'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
@@ -19,7 +20,8 @@
     'rxjs':                       { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
     'ng2-dragula':                { format: 'cjs', defaultExtension: 'js'},
-    'angular2-fontawesome':       { defaultExtension: 'js' }
+    'angular2-fontawesome':       { defaultExtension: 'js' },
+    'angularfire2':               { main: 'angularfire2.js', defaultExtension: 'js' }
   };
   var ngPackageNames = [
     'common',
